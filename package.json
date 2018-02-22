@@ -5,7 +5,7 @@
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js", 
+    "start": "node server.js",
     "heroku-postbuild": "cd client && npm install --only=dev && npm install && npm run build"
   },
   "repository": {
@@ -19,6 +19,8 @@
   },
   "homepage": "https://github.com/noeljane/Partyparty#readme",
   "dependencies": {
-    "express": "^4.16.2"
+    "bcrypt": "^1.0.3",
+    "express": "^4.16.2",
+    "mongoose": "^5.0.6"
   }
 }
