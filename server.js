@@ -1,11 +1,20 @@
 const
+    dotenv = require('dotenv').load()
     express = require('express'),
     app = express(),
-    mongoose = require('mongoose')
-    PORT = process.env.PORT || 3001
+    logger = require('morgan'),
+    bodyParser = require('body-parser'),
+    mongoose = require('mongoose'),
+    MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost/partyParty',
+    PORT = process.env.PORT || 3001, 
+    usersRoutes = require('./routes/users.js')
 
 //Use the client build folder
 app.use(express.static(`${__dirname}/client/build`))
+
+app.use(logger('dev'))
+app.use(bodyParser.json())
+
 
 //Root
 app.get('/api', (req,res) => {
