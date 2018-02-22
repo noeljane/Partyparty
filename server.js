@@ -1,6 +1,7 @@
 const
     express = require('express'),
     app = express(),
+    mongoose = require('mongoose')
     PORT = process.env.PORT || 3001
 
 //Use the client build folder
