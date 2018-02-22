@@ -1,5 +1,5 @@
 const
-    dotenv = require('dotenv').load()
+    dotenv = require('dotenv').load(),
     express = require('express'),
     app = express(),
     logger = require('morgan'),
@@ -8,6 +8,11 @@ const
     MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost/partyParty',
     PORT = process.env.PORT || 3001, 
     usersRoutes = require('./routes/users.js')
+
+//Connect MongoDB
+mongoose.connect(MONGODB_URI, (err) => {
+    console.log(err || 'Connected to MongoDB')
+})
 
 //Use the client build folder
 app.use(express.static(`${__dirname}/client/build`))
