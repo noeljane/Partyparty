@@ -26,6 +26,8 @@ app.get('/api', (req,res) => {
     res.json({message: "root"})
 })
 
+app.use('/api/users', usersRoutes)
+
 //WildCard- Catches all random routes
 app.get('*', (req, res) => {
     res.sendFile(`${__dirname}/client/build/index.html`)
