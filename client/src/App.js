@@ -23,11 +23,9 @@ class App extends Component {
     return (
       <div className="App">
       This is the app
-      {/* <Route path='/users' component= */}
+      { <Route path='/users' component={Users} users={this.state.users}/>
       
-        {this.state.users.map((u)=>{
-          return <li>{u.name}</li>
-        })} 
+        
       </div>
     );
   }
