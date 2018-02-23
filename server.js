@@ -22,7 +22,7 @@ app.use(bodyParser.json())
 
 
 //Root
-app.get('/api', (req,res) => {
+app.get('/', (req,res) => {
     res.json({message: "root"})
 })
 

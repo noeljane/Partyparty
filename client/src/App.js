@@ -4,7 +4,10 @@ import { Route } from 'react-router-dom'
 
 import axios from 'axios'
 
+import UsersList from './Users/UsersList.js'
+
 class App extends Component {
+
   state = {
     users: []
   }
@@ -17,14 +20,17 @@ class App extends Component {
           users: res.data
         })
       })
+    axios({method:'post', url: '/users'})
 
   }
   render() {
     return (
       <div className="App">
-      This is the app
-      { <Route path='/users' component={Users} users={this.state.users}/>
-      
+      <h1>Party Party!</h1>
+      <Route path='/users' render={()=>{
+        return <UsersList users={this.state.users}
+        />
+      }}/>      
         
       </div>
     );
