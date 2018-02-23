@@ -11,49 +11,59 @@ class Chat extends React.Component {
     
     state = { 
         endpoint: "http://localhost:8000", 
-        message:''
+        message:'',
+        notes: [{note: "wassup", person: "sheila"}]
       }
 
     componentDidMount = () => {
         //Socket
         console.log('a user connected!')
         socket.on('letter-from-server', (data) => {
-          this.setState({ message: data})
+          this.setState({
+               notes: [...this.state.notes, data]})
         })
     }
 
-    clickHandler = (letra) => {
-        console.log(letra)
-        console.log("I have been clicked")
-        socket.emit('mmmbob', letra)
-    }
+    // clickHandler = (letra) => {
+    //     console.log(letra)
+    //     console.log("I have been clicked")
+    //     socket.emit('mmmbob', letra)
+    // }
     
     submitHandler = (evt) =>{
         evt.preventDefault()
         console.log("submit button hit")
         
-        var chat = {
+        var newNote = {
             note: this.refs.message.value, 
             person: this.refs.name.value
         }
-        console.log(chat)
-        console.log(chat.note)
-        console.log(chat.person)
-        socket.emit('mmmbob', chat.note)
+        
+        socket.emit('mmmbob', newNote)
+       
+        // socket.emit('mmmbob', (newNote) => {
+            // this.setState({
+            //     notes: [...this.state.notes, newNote]
+            // })
+        // })
     }
 
     render(){
-        console.log(this.state.message)
+        console.log(this.state.notes)
         return(
             <div>
             <h1>This is my chat, buddy</h1>
             <form>
                 <input ref="message" placeholder="message"></input>
-                <input ref="name" placeholder="noel"></input>
+                <input ref="name" placeholder="name"></input>
                 <button onClick={this.submitHandler.bind(this)}>Submit</button>
             </form>
-            <button onClick={this.clickHandler.bind(this, 'clicky')}>Click Me</button>
-            <h1>{this.state.message}</h1>
+           <h2>Chat!</h2>
+            <ul>
+            {this.state.notes.map((n)=>{
+                return <li id={n.person}>{n.note} -{n.person}</li>
+            })}
+            </ul>
             </div>
         )
     }

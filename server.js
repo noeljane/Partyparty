@@ -37,7 +37,7 @@ io.on('connection', function(socket) {
     console.log('socket connected on the server!')
     socket.on('mmmbob', function(data){
         console.log(data)
-        io.emit( 'letter-from-server', data.toUpperCase())
+        io.emit( 'letter-from-server', data )
     })
     
 })
