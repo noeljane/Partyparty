@@ -4,6 +4,7 @@ import { Switch, Route } from 'react-router-dom'
 
 import UsersList from './Users/UsersList.js'
 import UserProfile from './Users/UserProfile.js'
+import Chat from './Chat/Chat.js'
 
 import axios from 'axios'
 
@@ -42,6 +43,10 @@ class App extends Component {
       {/* Individual Users */}  
       <Route path="/users/:id" render={(props) => {
         return <UserProfile user={props.match.params.id} />
+      }}/>
+
+      <Route path="/socket" render={(props) =>{
+        return <Chat />
       }}/>
  
       </Switch> 

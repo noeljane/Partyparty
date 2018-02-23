@@ -41,6 +41,7 @@ io.on('connection', function(socket) {
     })
     
 })
+io.listen(8000)
 
 //Root
 app.get('/', (req,res) => {

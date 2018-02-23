@@ -1,15 +1,17 @@
-import react from 'react'
+import React from 'react'
 
 import axios from 'axios'
-import openSocket from 'socket.io-client'
+import socketIOClient from 'socket.io-client'
 
-const socket = openSocket('http://localhost:3001')
-
+// const socket = openSocket('http://localhost:3001')
+const socket = socketIOClient("http://localhost:8000")
 
 
 class Chat extends React.Component {
+    
     state = { 
-        theletter: ''
+        endpoint: "http://localhost:8000", 
+        theletter:''
       }
 
     componentDidMount = () => {
@@ -20,7 +22,7 @@ class Chat extends React.Component {
         })
     }
 
-    clickHandler(letra){
+    clickHandler = (letra) => {
         console.log("I have been clicked")
         socket.emit('mmmbob', letra)
     }
