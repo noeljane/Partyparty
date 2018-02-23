@@ -39,12 +39,12 @@ class App extends Component {
         />
       }}/>
       
-
       {/* Individual Users */}  
       <Route path="/users/:id" render={(props) => {
         return <UserProfile user={props.match.params.id} />
       }}/>
 
+      {/*Chat*/}
       <Route path="/socket" render={(props) =>{
         return <Chat />
       }}/>
