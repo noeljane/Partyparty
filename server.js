@@ -56,6 +56,9 @@ app.use('/users', usersRoutes)
 //Party Routes
 app.use('/parties', partiesRoutes)
 
+//Message Routes
+app.use('/parties/:id/messages', messagesRoutes)
+
 //WildCard- Catches all random routes
 app.get('*', (req, res) => {
     res.sendFile(`${__dirname}/client/build/index.html`)
