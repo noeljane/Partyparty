@@ -4,6 +4,8 @@ const
     userSchema = new mongoose.Schema({
         name: { type: String },
         email: { type: String, required: true, unique: true }, 
+        invites:[{type: mongoose.Schema.Types.ObjectId, ref: 'Party'}], 
+        parties: [{type: mongoose.Schema.Types.ObjectId, ref: 'Party'}]
 
     })
 

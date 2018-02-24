@@ -17,23 +17,14 @@ class Chat extends React.Component {
 
     componentDidMount = () => {
         //Socket
-        console.log('a user connected!')
         socket.on('letter-from-server', (data) => {
           this.setState({
                notes: [...this.state.notes, data]})
         })
     }
 
-    // clickHandler = (letra) => {
-    //     console.log(letra)
-    //     console.log("I have been clicked")
-    //     socket.emit('mmmbob', letra)
-    // }
-    
     submitHandler = (evt) =>{
         evt.preventDefault()
-        console.log("submit button hit")
-        
         var newNote = {
             note: this.refs.message.value, 
             person: this.refs.name.value
@@ -41,11 +32,6 @@ class Chat extends React.Component {
         
         socket.emit('mmmbob', newNote)
        
-        // socket.emit('mmmbob', (newNote) => {
-            // this.setState({
-            //     notes: [...this.state.notes, newNote]
-            // })
-        // })
     }
 
     render(){

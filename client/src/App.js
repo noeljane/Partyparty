@@ -33,21 +33,21 @@ class App extends Component {
       <h1>Party Party!</h1>
       
       <Switch >
-      {/* List of Users */}
-      <Route exact path='/users' render={(props)=>{
-        return <UsersList users={this.state.users}
-        />
-      }}/>
-      
-      {/* Individual Users */}  
-      <Route path="/users/:id" render={(props) => {
-        return <UserProfile user={props.match.params.id} />
-      }}/>
+        {/* List of Users */}
+        <Route exact path='/users' render={(props)=>{
+          return <UsersList users={this.state.users}
+          />
+        }}/>
+        
+        {/* Individual Users */}  
+        <Route path="/users/:id" render={(props) => {
+          return <UserProfile user={props.match.params.id} />
+        }}/>
 
-      {/*Chat*/}
-      <Route path="/socket" render={(props) =>{
-        return <Chat />
-      }}/>
+        {/*Chat*/}
+        <Route path="/socket" render={(props) =>{
+          return <Chat />
+        }}/>
  
       </Switch> 
       </div>

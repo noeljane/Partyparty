@@ -16,6 +16,7 @@ const
     //http = require('http').Server(app),
     //io = require('socket.io')(http),
     usersRoutes = require('./routes/users.js')
+    partiesRoutes = require('./routes/parties.js')
 
     
 
@@ -51,6 +52,9 @@ app.get('/', (req,res) => {
 
 //Users Routes
 app.use('/users', usersRoutes)
+
+//Party Routes
+app.use('/parties', partiesRoutes)
 
 //WildCard- Catches all random routes
 app.get('*', (req, res) => {
