@@ -7,7 +7,8 @@ const
         date: Date, 
         _by: {type: mongoose.Schema.Types.ObjectId, ref: 'User'}, 
         invitees: [{type: mongoose.Schema.Types.ObjectId, ref: 'User'}],
-        Going:  [{type: mongoose.Schema.Types.ObjectId, ref: 'User'}]
+        Going:  [{type: mongoose.Schema.Types.ObjectId, ref: 'User'}], 
+       
 
     })
 

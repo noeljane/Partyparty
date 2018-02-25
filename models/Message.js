@@ -5,7 +5,7 @@ const
         _by: {type: mongoose.Schema.Types.ObjectId, ref: 'User'}, 
         _party: {type: mongoose.Schema.Types.ObjectId, ref: 'Party' }
 
-    },timestamps)
+    })
 
     const Message = mongoose.model('Message', messageSchema)
 

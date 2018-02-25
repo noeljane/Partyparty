@@ -3,7 +3,7 @@ const Party = require('../models/Party.js')
 module.exports = {
    
     //list all parties
-    index: (req,res) =>{
+    index: (req, res) =>{
         Party.find({}, (err,parties) => {
             if (err) console.log(err)
             res.json(parties)
@@ -11,7 +11,7 @@ module.exports = {
     },
 
     //Get one party
-    show: (req,res) =>{
+    show: (req, res) =>{
         console.log("Current Party:")
         console.log(req.party)
         Party.findById(req.params.id, (err,party) => {
@@ -29,11 +29,11 @@ module.exports = {
     }, 
 
     //update an existing party
-    update: (req,res) => {
-        Party.findById(req.params.id, (err, party ) => {
+    update: (req, res) => {
+        Party.findById(req.params.id, (err, party) => {
             Object.assign(party, req.body)
-            party.save((err, updatedParty)=>{
-                if (err) res.json({success:false, code: err.code})
+            party.save((err, updatedParty) => {
+                if(err) res.json({success:false, code: err.code})
                 res.json({success:true, message: "Party upgraded!🎈" })
             })
         })
@@ -41,7 +41,7 @@ module.exports = {
     },
 
     //delete an existing party
-    destroy: (req,res) =>{
+    destroy: (req, res) => {
         Party.findByIdAndRemove(req.params.id, (err,party) => {
             if(err) return res.json({success:false, code: err.code})
             res.json({success:true, message: "You're a party pooper 💩. Your party has been deleted", party})
