@@ -1,4 +1,6 @@
 const User = require('../models/User.js')
+const signToken = require('../serverAuth.js').signToken
+
 
 module.exports = {
     //list all users
@@ -21,7 +23,8 @@ module.exports = {
     create: (req, res) => {
         User.create(req.body, (err, user) => {
             if(err) return res.json({success: false, code: err.code})
-            res.json({success: true, message: "User created."})
+            const token = signToken(user)
+            res.json({success: true, message: "User created. Token attached.", token})
         })
     }, 
 
@@ -52,8 +55,8 @@ module.exports = {
                 //deny access
                 return res.json({success: false, message: "Invalid credentials."})
             }
-
-            res.json({success: true, message: "User authenticated."})
+            const token = signToken(user)
+            res.json({success: true, message: "Token attached.", token})
         })
 
     }
