@@ -4,6 +4,8 @@ import { Switch, Route } from 'react-router-dom'
 
 import UsersList from './Users/UsersList.js'
 import UserProfile from './Users/UserProfile.js'
+import LogIn from './Users/LogIn.js'
+
 import Chat from './Chat/Chat.js'
 
 import axios from 'axios'
@@ -33,6 +35,10 @@ class App extends Component {
       <h1>Party Party!</h1>
       
       <Switch >
+        {/*LogIn Page*/}
+        <Route exact path ='/login' render={(props)=>{
+          return <LogIn />
+        }}/>
         {/* List of Users */}
         <Route exact path='/users' render={(props)=>{
           return <UsersList users={this.state.users}

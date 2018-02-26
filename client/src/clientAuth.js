@@ -20,7 +20,7 @@ function getCurrentUser(){
 }
 
 function logIn(credentials) {
-    return clientAuth({method: 'post', url: '/users/authenticate', data: credentails})
+    return clientAuth({method: 'post', url: '/users/authenticate', data: credentials})
     .then(res => {
         const token = res.data.token
         if(token) {
