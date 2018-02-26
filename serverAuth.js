@@ -6,6 +6,8 @@ const
 function signToken(user){
     const userData = user.toObject()
     delete userData.password
+    delete userData.invites
+    delete userData.parties
     return jwt.sign(userData, process.env.JWT_SECRET)
 }
 

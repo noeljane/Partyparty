@@ -9,17 +9,24 @@ import LogIn from './Users/LogIn.js'
 import Chat from './Chat/Chat.js'
 
 import axios from 'axios'
+import clientAuth from './clientAuth.js'
 
 
 
 class App extends Component {
 
   state = {
+    currentUser: null,
     users: []
   }
 
   //go to server and get information back
   componentDidMount = () => {
+
+    this.setState({
+      currentUser: clientAuth.getCurrentUser()
+    })
+
     //User Index
     axios({method: 'get', url: '/users'})
       .then((res) => { 
@@ -29,15 +36,30 @@ class App extends Component {
       })
   }
 
+  onLogin (user) {
+    this.setState({
+      currentUser: user
+    })
+  }
+
   render() {
+    const { currentUser } = this.state
     return (
       <div className="App">
       <h1>Party Party!</h1>
       
+      {currentUser ? <h2>{currentUser.name}</h2> : null}
+      
+      
       <Switch >
         {/*LogIn Page*/}
-        <Route exact path ='/login' render={(props)=>{
-          return <LogIn />
+        <Route exact path ='/login' render={(routerProps)=>{
+          return (
+            <LogIn
+              onLoginSuccess={this.onLogin.bind(this)}
+              history={routerProps.history}
+            />
+          )
         }}/>
         {/* List of Users */}
         <Route exact path='/users' render={(props)=>{

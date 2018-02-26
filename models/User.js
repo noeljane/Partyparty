@@ -5,8 +5,8 @@ const
         name: { type: String },
         email: { type: String, required: true, unique: true }, 
         invites:[{type: mongoose.Schema.Types.ObjectId, ref: 'Party'}], 
-        parties: [{type: mongoose.Schema.Types.ObjectId, ref: 'Party'}]
-
+        parties: [{type: mongoose.Schema.Types.ObjectId, ref: 'Party'}],
+        password: {type: String, required:true}
     })
 
     //Encrypts Your Password when it is generated
@@ -15,8 +15,10 @@ const
     }
 
     //Checks to see if your password is correct
-    userSchema.methods.generateHash = function(password) {
-        return bcrypt.hashSync(password, bcrypt.genSaltSync(8))
+    userSchema.methods.validPassword = function(password) {
+        console.log("Password field:", password)
+        console.log("Hashed Password:", this.password)
+        return bcrypt.compareSync(password, this.password)
     }
 
     //Middleware for changing password
