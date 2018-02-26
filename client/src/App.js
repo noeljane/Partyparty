@@ -5,6 +5,7 @@ import { Switch, Route } from 'react-router-dom'
 import UsersList from './Users/UsersList.js'
 import UserProfile from './Users/UserProfile.js'
 import LogIn from './Users/LogIn.js'
+import SignUp from './Users/SignUp.js'
 
 import Chat from './Chat/Chat.js'
 
@@ -23,6 +24,7 @@ class App extends Component {
   //go to server and get information back
   componentDidMount = () => {
 
+    //If user is signed in, this is who it is: 
     this.setState({
       currentUser: clientAuth.getCurrentUser()
     })
@@ -41,6 +43,12 @@ class App extends Component {
       currentUser: user
     })
   }
+  
+  onSignUp = (user)=> {
+    this.setState({
+      currentUser: user
+    })
+  }
 
   render() {
     const { currentUser } = this.state
@@ -53,11 +61,20 @@ class App extends Component {
       
       <Switch >
         {/*LogIn Page*/}
-        <Route exact path ='/login' render={(routerProps)=>{
+        <Route exact path ='/login' render={(routerProps) => {
           return (
             <LogIn
               onLoginSuccess={this.onLogin.bind(this)}
               history={routerProps.history}
+            />
+          )
+        }}/>
+        {/*Sign Up Page*/}
+        <Route exact path='/signup' render={(routerProps) => {
+          return (
+            <SignUp 
+            onSignUpSuccess={this.onSignUp.bind(this)}
+            history={routerProps.history}
             />
           )
         }}/>

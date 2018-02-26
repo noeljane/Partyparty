@@ -36,8 +36,6 @@ class LogIn extends React.Component{
     }
 
     render (){
-        console.log(this.state.fields.email)
-        console.log(this.state.fields.password)
         const { email, password } = this.state.fields
         return (
             <div>
