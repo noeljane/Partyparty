@@ -1,2 +1,62 @@
 import axios from 'axios'
 import jwtDecode from 'jwt-decode'
+
+const clientAuth = axios.create()
+clientAuth.defaults.headers.common.token = getToken()
+
+function getToken(){
+    return localStorage.getItem('token')
+}
+
+function setToken(token){
+    localStorage.setItem('token', token)
+    return token
+}
+
+function getCurrentUser(){
+    const token = getToken()
+    if(token) return jwtDecode(token)
+    return null
+}
+
+function logIn(credentials) {
+    return clientAuth({method: 'post', url: '/users/authenticate', data: credentails})
+    .then(res => {
+        const token = res.data.token
+        if(token) {
+            //set token as header for all following api requests
+            clientAuth.defaults.headers.common.token = setToken(token)
+            return jwtDecode(token)
+        } else {
+            return false
+        }
+    })
+}
+
+function signUp(userInfo) {
+    return clientAuth({method: 'post', url: '/users', data: userInfo})
+    .then(res => {
+        const token = res.data.token
+        if(token) {
+            //sets token like above
+            clientAuth.defaults.headers.common.token = setToken(token)
+            return jwtDecode(token)
+        } else {
+            return false
+        }
+    })
+}
+
+function logOut(){
+    localStorage.removeItem('token')
+    delete clientAuth.defaults.headers.common.token
+    return true
+}
+
+export default {
+    getCurrentUser,
+    logIn, 
+    signUp,
+    logOut
+    
+}
