@@ -119,8 +119,8 @@ class App extends Component {
         }}/>
 
         {/* Party Show */}
-        <Route path='/parties/:id' render={(routerProps) => {
-          return <PartyShow />
+        <Route path='/parties/:id' render={(props) => {
+          return <PartyShow partyId={props.match.params.id}/>
         }}/>
  
       </Switch> 

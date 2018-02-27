@@ -8,11 +8,8 @@ class UserProfile extends React.Component {
     }
     
     componentDidMount = () => {
-    
-        console.log(this.props.user)
         axios({method:'get', url: `/users/${this.props.userId}`})
         .then((res) => {
-            console.log(res)
             this.setState({
                 user: res.data
             })  
