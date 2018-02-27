@@ -23,6 +23,7 @@ function verifyToken(req,res, next) {
         if(!user) return res.json({success: false, message: "Invalid token."})
         //otherwise, add user to req object
         req.user = user
+        //Now, you have access to any user on any route that requires authentication
         // go on to process the route: 
         next()
     })

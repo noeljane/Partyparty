@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-import { Switch, Route } from 'react-router-dom'
+import { Switch, Route, Redirect } from 'react-router-dom'
 
 //Users
 import UsersList from './Users/UsersList.js'
@@ -26,18 +26,7 @@ import axios from 'axios'
 class App extends Component {
 
   state = {
-    currentUser: null,
-    users: []
-  }
-
-  //go to server and get information back
-  componentDidMount = () => {
-
-    //If user is signed in, this is who it is: 
-    this.setState({
-      currentUser: clientAuth.getCurrentUser()
-    })
-
+    currentUser: clientAuth.getCurrentUser()
   }
 
   onLogin (user) {
@@ -53,9 +42,9 @@ class App extends Component {
   }
   
   logOut() {
-      clientAuth.logOut()
-      this.setState({ currentUser: null })
-  }
+		clientAuth.logOut()
+		this.setState({ currentUser: null })
+	}
 
   render() {
     const { currentUser } = this.state
@@ -96,31 +85,43 @@ class App extends Component {
         }}/>
 
         {/* List of Users */}
-        <Route exact path='/users' render={(props)=>{
-          return <UsersList users={this.state.users}
-          />
+        <Route exact path='/users' render={(props)=> {
+          return currentUser
+              ? <UsersList users={this.state.users}
+              />
+            : <Redirect to="/login" />
+          return 
         }}/>
         
         {/* Individual Users */}  
-        <Route path="/users/:id" render={(props) => {
-          return <UserProfile user={currentUser} userId={props.match.params.id}/>
+        <Route path="/users/:id" render={(routerProps) => {
+          return currentUser
+              ? <UserProfile user={currentUser} userId={routerProps.match.params.id}/>
+              : <Redirect to="/login" /> 
         }}/>
 
 
 
         {/*Chat*/}
-        <Route path="/socket" render={(props) => {
-          return <Chat />
+        <Route path="/chat" render={(routerProps) => {
+          return currentUser
+              ? <Chat />
+              : <Redirect to="login" />
         }}/>
 
         {/* Create Party */}
         <Route path='/parties/new' render={(routerProps) => {
-          return <CreateParty />
+          return currentUser
+            ? <CreateParty />
+            : <Redirect to="/login" /> 
+          
         }}/>
 
         {/* Party Show */}
-        <Route path='/parties/:id' render={(props) => {
-          return <PartyShow partyId={props.match.params.id}/>
+        <Route path='/parties/:id' render={(routerProps) => {
+            return currentUser
+              ? <PartyShow partyId={routerProps.match.params.id}/>
+              : <Redirect to="/login" />
         }}/>
  
       </Switch> 

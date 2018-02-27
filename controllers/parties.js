@@ -22,9 +22,9 @@ module.exports = {
 
     //create a new party
     create: (req, res) => {
-        Party.create(req.body, (err, party) => {
+        Party.create({...req.body, _by: req.user}, (err, party) => {
             if(err) return res.json({success:false, code: err.code})
-            res.json({success:true, message: "Party created!🎉"})
+            res.json({success:true, message: "Party created!🎉", party: party})
         })
     }, 
 

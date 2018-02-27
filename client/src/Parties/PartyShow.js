@@ -2,6 +2,8 @@ import React from 'react'
 
 import axios from 'axios'
 
+import Chat from '../Chat/Chat.js'
+
 class PartyShow extends React.Component {
     state = {
         party: '', 
@@ -28,11 +30,10 @@ class PartyShow extends React.Component {
                 <h1>Here's your party</h1>
                     <h2>{party.title}</h2>
                     <h3>{party.description}</h3>
-                    {party.date}
-                    {party.location}
-                    
+                    <p>{party.date}</p>
+                    <p>{party.location}</p>
 
-                
+                <Chat />
             </div>
         )
     }
