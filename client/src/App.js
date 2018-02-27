@@ -67,6 +67,7 @@ class App extends Component {
       
       <Switch >
         {/*LogIn Page*/}
+       
         <Route exact path ='/login' render={(routerProps) => {
           return (
             <LogIn
@@ -75,6 +76,7 @@ class App extends Component {
             />
           )
         }}/>
+
         {/*Sign Up Page*/}
         <Route exact path='/signup' render={(routerProps) => {
           return (
@@ -100,7 +102,7 @@ class App extends Component {
         
         {/* Individual Users */}  
         <Route path="/users/:id" render={(props) => {
-          return <UserProfile user={currentUser} />
+          return <UserProfile user={currentUser} userId={props.match.params.id}/>
         }}/>
 
         {/*Chat*/}

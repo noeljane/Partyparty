@@ -8,9 +8,9 @@ usersRouter.route('/')
     .get(usersCtrl.index)
     .post(usersCtrl.create)
 
-usersRouter.post('/authenticate', usersCtrl.authenticate)
+// usersRouter.post('/authenticate', usersCtrl.authenticate)
 
-usersRouter.use(verifyToken)
+// usersRouter.use(verifyToken)
 usersRouter.route('/:id')
     .get(usersCtrl.show)
     .patch(usersCtrl.update)
