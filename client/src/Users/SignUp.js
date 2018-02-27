@@ -11,7 +11,7 @@ class SignUp extends React.Component {
     }
 
     onInputChange (evt) {
-        
+        evt.preventDefault()
         this.setState({
             fields: {
                 ...this.state.fields, 
