@@ -8,6 +8,8 @@ import LogIn from './Users/LogIn.js'
 import SignUp from './Users/SignUp.js'
 import LogOut from './Users/LogOut.js'
 
+import Party from './Parties/Party.js'
+
 import Chat from './Chat/Chat.js'
 
 import axios from 'axios'
@@ -106,8 +108,13 @@ class App extends Component {
         }}/>
 
         {/*Chat*/}
-        <Route path="/socket" render={(props) =>{
+        <Route path="/socket" render={(props) => {
           return <Chat />
+        }}/>
+
+        {/* Create Party */}
+        <Route path='/parties' render={(routerProps) => {
+          return <Party />
         }}/>
  
       </Switch> 

@@ -44,6 +44,7 @@ class UserProfile extends React.Component {
                         )
                     })}
                 </ul>
+                <button>Create Party</button>
                
             </div>
 
