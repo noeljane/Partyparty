@@ -30,6 +30,7 @@ class PartyShow extends React.Component {
                     <h3>{party.description}</h3>
                     {party.date}
                     {party.location}
+                    
 
                 
             </div>
