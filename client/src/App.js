@@ -17,8 +17,7 @@ import PartyShow from './Parties/PartyShow.js'
 //Messages
 import Chat from './Chat/Chat.js'
 
-//Middleware
-import axios from 'axios'
+
 
 
 

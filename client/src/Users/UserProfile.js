@@ -1,34 +1,40 @@
 import React from 'react'
-import axios from 'axios'
+import clientAuth from '../clientAuth.js'
 
 import PartyIndex from '../Parties/PartyIndex.js'
 
 class UserProfile extends React.Component {
     state = {
-        user: [],
-        parties: []
+        user: []
     }
     
-    componentDidMount = () => {
-        axios({method:'get', url: `/users/${this.props.userId}`})
-        .then((res) => {
-            this.setState({
-                user: res.data
-            })  
+    // componentDidMount = () => {
+    //    clientAuth.getCurrentUser().then(res => {
+    //         this.setState({
+    //             user: res.data
+    //         })  
 
-        })
+    //     })
 
-    }
+    // }
     render(){
         const { user } = this.state
         console.log(this.props)
         return(
             <div>
                 {/* This doesn't work!!! */}
-                <h1 id={this.state.user.id}>Hi! I'm {this.state.user.name}</h1> 
-                <h3>{this.state.user.name}</h3>
-                <PartyIndex />
+                <h1 id={this.props.user.id}>Hi {this.props.user.name}!</h1> 
+                    <h3>Your Parties:</h3>
+                    <PartyIndex />
+
+                    <h3>Parties You're Invited to: </h3>
+                        <p>create a party index of this </p>
+
+                    <h3>Parties You're Attending:</h3>
+                        <p>create a party index of this </p>
+                
                 <button>Create Party</button>
+
                
             </div>
 

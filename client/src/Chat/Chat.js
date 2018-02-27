@@ -1,6 +1,6 @@
 import React from 'react'
 
-import axios from 'axios'
+
 import socketIOClient from 'socket.io-client'
 
 // const socket = openSocket('http://localhost:3001')

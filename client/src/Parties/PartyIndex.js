@@ -14,13 +14,14 @@ class PartyIndex extends React.Component {
         })
     }
     render (){
+        console.log(this.state.parties)
         return (
             <div>
                 <h1>This should be a list of my parties: </h1>
                 <ul>
                     {this.state.parties.map((p)=>{
                         return (
-                            <li> {p.title}</li>
+                            <li id={p._id}> {p.title}</li>
                         )
                     })}
                 </ul>
