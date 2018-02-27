@@ -2,18 +2,24 @@ import React, { Component } from 'react';
 import './App.css';
 import { Switch, Route } from 'react-router-dom'
 
+//Users
 import UsersList from './Users/UsersList.js'
 import UserProfile from './Users/UserProfile.js'
 import LogIn from './Users/LogIn.js'
 import SignUp from './Users/SignUp.js'
 import LogOut from './Users/LogOut.js'
+import clientAuth from './clientAuth.js'
 
-import Party from './Parties/Party.js'
+//Parties
+import CreateParty from './Parties/CreateParty.js'
+import PartyShow from './Parties/PartyShow.js'
 
+//Messages
 import Chat from './Chat/Chat.js'
 
+//Middleware
 import axios from 'axios'
-import clientAuth from './clientAuth.js'
+
 
 
 
@@ -32,13 +38,6 @@ class App extends Component {
       currentUser: clientAuth.getCurrentUser()
     })
 
-    //User Index
-    axios({method: 'get', url: '/users'})
-      .then((res) => { 
-        this.setState({
-          users: res.data
-        })
-      })
   }
 
   onLogin (user) {
@@ -107,14 +106,21 @@ class App extends Component {
           return <UserProfile user={currentUser} userId={props.match.params.id}/>
         }}/>
 
+
+
         {/*Chat*/}
         <Route path="/socket" render={(props) => {
           return <Chat />
         }}/>
 
         {/* Create Party */}
-        <Route path='/parties' render={(routerProps) => {
-          return <Party />
+        <Route path='/parties/new' render={(routerProps) => {
+          return <CreateParty />
+        }}/>
+
+        {/* Party Show */}
+        <Route path='/parties/:id' render={(routerProps) => {
+          return <PartyShow />
         }}/>
  
       </Switch> 

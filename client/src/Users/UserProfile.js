@@ -8,7 +8,7 @@ class UserProfile extends React.Component {
     }
     
     componentDidMount = () => {
-        //THIS DOESN'T WORK!!!!!
+    
         console.log(this.props.user)
         axios({method:'get', url: `/users/${this.props.userId}`})
         .then((res) => {
