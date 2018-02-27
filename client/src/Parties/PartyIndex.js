@@ -6,7 +6,7 @@ class PartyIndex extends React.Component {
     render (){
         return (
             <div>
-                <h1>This should be a list of parties: </h1>
+                <h1>This should be a list of my parties: </h1>
             </div>
         )
     }

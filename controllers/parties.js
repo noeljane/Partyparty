@@ -4,7 +4,7 @@ module.exports = {
    
     //list all parties
     index: (req, res) =>{
-        Party.find({}, (err,parties) => {
+        Party.find({_by:req.user}, (err,parties) => {
             if (err) console.log(err)
             res.json(parties)
         })

@@ -35,7 +35,7 @@ class UserProfile extends React.Component {
                 {/* This doesn't work!!! */}
                 <h1 id={this.state.user.id}>Hi! I'm {this.state.user.name}</h1> 
                 <h3>{this.state.user.name}</h3>
-                <h1>My Parties!</h1>
+                <h1>All Parties!- You have to change this:</h1>
                 <ul>
                     {this.state.parties.map((p)=>{
                         return (
