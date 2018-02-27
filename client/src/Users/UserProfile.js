@@ -1,6 +1,8 @@
 import React from 'react'
 import axios from 'axios'
 
+import PartyIndex from '../Parties/PartyIndex.js'
+
 class UserProfile extends React.Component {
     state = {
         user: [],
@@ -41,6 +43,7 @@ class UserProfile extends React.Component {
                         )
                     })}
                 </ul>
+                <PartyIndex />
                 <button>Create Party</button>
                
             </div>
