@@ -2,10 +2,13 @@
 const
     express = require('express'),
     partiesRouter = new express.Router(),
-    partiesCtrl = require('../controllers/parties.js')
+    partiesCtrl = require('../controllers/parties.js'),
+    verifyToken = require('../serverAuth.js').verifyToken
 
     //messagesRouter = new express.Router(), 
     messagesCtrl = require('../controllers/messages.js')
+
+partiesRouter.use(verifyToken)
 
 partiesRouter.route('/')
     .get(partiesCtrl.index)

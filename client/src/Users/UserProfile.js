@@ -8,15 +8,6 @@ class UserProfile extends React.Component {
         user: []
     }
     
-    // componentDidMount = () => {
-    //    clientAuth.getCurrentUser().then(res => {
-    //         this.setState({
-    //             user: res.data
-    //         })  
-
-    //     })
-
-    // }
     render(){
         const { user } = this.state
         console.log(this.props)
