@@ -3,11 +3,8 @@ import axios from 'axios'
 
 class UserProfile extends React.Component{
     
-    state ={
-        user: ''
-    }
-    
     componentDidMount = () => {
+        //THIS DOESN'T WORK!!!!!
         axios({method:'get', url: `/users/${this.props.user}`})
         .then((res) => {
             this.setState({
@@ -16,13 +13,24 @@ class UserProfile extends React.Component{
 
         })
 
+        axios({method:'get', url: `/parties`})
+            .then((res) =>{
+                console.log(res.data)
+                this.setState({
+                    parties: res.data
+                })
+            })
+
     }
     render(){
-        
+        console.log(this.state.parties)
         return(
             <div>
-                <h1 id={this.state.user.id}>Hi! I'm {this.state.user.name}</h1>
-                <h3>{this.state.user.name}</h3>
+                {/* This doesn't work!!! */}
+                {/* <h1 id={this.state.user.id}>Hi! I'm {this.state.user.name}</h1>
+                <h3>{this.state.user.name}</h3> */}
+                <h1>My Parties!</h1>
+               
             </div>
 
         )

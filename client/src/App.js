@@ -6,6 +6,7 @@ import UsersList from './Users/UsersList.js'
 import UserProfile from './Users/UserProfile.js'
 import LogIn from './Users/LogIn.js'
 import SignUp from './Users/SignUp.js'
+import LogOut from './Users/LogOut.js'
 
 import Chat from './Chat/Chat.js'
 
@@ -49,6 +50,11 @@ class App extends Component {
       currentUser: user
     })
   }
+  
+  logOut() {
+      clientAuth.logOut()
+      this.setState({ currentUser: null })
+  }
 
   render() {
     const { currentUser } = this.state
@@ -78,6 +84,14 @@ class App extends Component {
             />
           )
         }}/>
+        
+        {/*Log Out Page*/}
+        <Route path='/logout' render={(routerProps) => {
+          return (
+            <LogOut onLogOut={this.logOut.bind(this)}/>
+          )
+        }}/>
+
         {/* List of Users */}
         <Route exact path='/users' render={(props)=>{
           return <UsersList users={this.state.users}
@@ -86,7 +100,7 @@ class App extends Component {
         
         {/* Individual Users */}  
         <Route path="/users/:id" render={(props) => {
-          return <UserProfile user={props.match.params.id} />
+          return <UserProfile user={currentUser} />
         }}/>
 
         {/*Chat*/}
