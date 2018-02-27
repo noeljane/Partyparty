@@ -53,10 +53,15 @@ function logOut(){
     return true
 }
 
+function getParties(){
+    return clientAuth({ method: 'get', url: '/parties'})
+}
+
 export default {
     getCurrentUser,
     logIn, 
     signUp,
-    logOut
+    logOut, 
+    getParties
     
 }

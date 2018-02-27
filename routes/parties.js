@@ -11,6 +11,9 @@ partiesRouter.route('/')
     .get(partiesCtrl.index)
     .post(partiesCtrl.create)
 
+// partiesRouter.route('/invites')
+//     .get(partiesCtrl.indexInvites)
+
 partiesRouter.route('/:id')
     .get(partiesCtrl.show)
     .patch(partiesCtrl.update)

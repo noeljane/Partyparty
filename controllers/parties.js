@@ -3,12 +3,24 @@ const Party = require('../models/Party.js')
 module.exports = {
    
     //list all parties
-    index: (req, res) =>{
+    index: (req, res) => {
         Party.find({_by:req.user}, (err,parties) => {
             if (err) console.log(err)
             res.json(parties)
         })
     },
+
+    // //list parties that I'm invited to
+    // indexInvites: (req, res) => {
+    //     Party.find({ invitees : {_id: req.user}}, (err, parties) => {
+    //         if (err) console.log(err)
+    //         res.json(parties)
+
+    //     })
+    // },
+
+    //list parties that I"m going to
+        //to add later
 
     //Get one party
     show: (req, res) =>{
