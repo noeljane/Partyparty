@@ -7,7 +7,6 @@ import UsersList from '../Users/UsersList.js'
 
 class PartyShow extends React.Component {
     state = {
-        parties: [],
         party: '', 
         invitees: '', 
         going: '',
@@ -17,20 +16,11 @@ class PartyShow extends React.Component {
     }
 
     componentDidMount = () => {
-        clientAuth.getParties().then(res => {
-            this.setState({
-                party: res.data.filter((p) => p._id === this.props.partyId)[0],
-                invitees: this.state.party.invitees, 
-                parties: res.data
-            }), 
-                
-            console.log('state is', this.state.party)
-        })
-
         clientAuth.getParty(this.props.partyId).then(res => {
             console.log(res.data)
             this.setState({
-                party: res.data
+                party: res.data,
+                invitees: this.state.party.invitees
             })
         })
 
@@ -77,12 +67,26 @@ class PartyShow extends React.Component {
         })
     }
 
-    inviteOne(evt){
+    deleteThisParty(){
+        //THIS DOESNT WORK!!!
+        
+        // axios.deleteParty(this.props.partyId).then((res) => {
+        //     console.log(res.data)
+        //     this.setState({
+        //         party: null
+        //     })
+        // })
+
+    }
+
+    inviteOne (evt) {
         evt.preventDefault()
         console.log(this)
-        console.log(this.state.party.invitees)
+        const fields = {
+            invitees: this.refs.user.value
+        }
         // this.setState({
-        //     invitees: [...this.state.party.invitees, user]
+        //     invitees: [...this.state.party.invitees, this.user]
         // })
 
     }
@@ -104,8 +108,8 @@ class PartyShow extends React.Component {
                 :
                    <h1>oops! No Party here anymore</h1>
                 }
-                <button>Delete</button>
-                <button onClick={this.makeEditTrue.bind(this)}>Edit Button</button>
+                <button onClick={this.deleteThisParty.bind(this)}>Delete</button>
+                <button onClick={this.makeEditTrue.bind(this)}>Edit Party</button>
                     {this.state.edit
                     ?
                         <form key={party._id} onSubmit={this.handleEditSubmit.bind(this)}>
@@ -122,9 +126,11 @@ class PartyShow extends React.Component {
                     <ul>
                         {this.state.users.map((u)=>{
                             return <li key={u._id}>
-                                <button onClick={this.inviteOne.bind(this)}>Invite</button>
-                                {u.name}
-                                {u._id}
+            
+                        
+                                        <button onSubmit={this.inviteOne.bind(this, u._id)}>Invite</button>
+                                        {u.name}
+                                        {u._id}
                                 </li>
                          })} 
                     </ul>

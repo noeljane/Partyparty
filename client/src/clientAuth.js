@@ -69,6 +69,10 @@ function updateParty(id, fields) {
     return clientAuth({ method: 'patch', url: `/api/parties/${id}`, data:fields})
 }
 
+function deleteParty(id){
+    return clientAuth({ method: 'destroy', url: `/api/parties/${id}`})
+}
+
 export default {
     getCurrentUser,
     logIn, 

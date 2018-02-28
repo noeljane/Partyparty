@@ -43,6 +43,13 @@ module.exports = {
     //update an existing party
     update: (req, res) => {
         Party.findById(req.params.id, (err, party) => {
+            if(err) console.log(err)
+            const updatedPartyData = {}
+            for(field in req.body) {
+                if(req.body[field] !=="")
+                updatedPartyData[field] = req.body[field]
+            }
+            Object.assign(party, updatedPartyData)
             party.save((err, updatedParty) => {
                 if(err) res.json({success:false, code: err.code})
                 res.json({success:true, message: "Party upgraded!🎈", party: party })
