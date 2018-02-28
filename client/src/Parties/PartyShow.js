@@ -1,33 +1,43 @@
 import React from 'react'
 import axios from 'axios'
+
 import clientAuth from '../clientAuth.js'
 import Chat from '../Chat/Chat.js'
+import UsersList from '../Users/UsersList.js'
 
 class PartyShow extends React.Component {
     state = {
         parties: [],
         party: '', 
-        invites: '', 
+        invitees: '', 
         going: '',
         edit: false, 
-        user: ''
+        user: '', 
+        users: [], 
     }
 
     componentDidMount = () => {
-        // clientAuth.getParty(this.props.partyId).then(res =>{
-        //     console.log(res.data)
-        // } )
         clientAuth.getParties().then(res => {
             this.setState({
-                party: res.data.filter((p) => p._id === this.props.partyId)[0]
-            })
+                party: res.data.filter((p) => p._id === this.props.partyId)[0],
+                invitees: this.state.party.invitees
+            }), 
+                
             console.log('state is', this.state.party)
         })
+
+        axios({method: 'get', url: '/api/users'})
+          .then((res) => { 
+            this.setState({
+              users: res.data
+            })
+          })
     }
   
 
     handleEditSubmit (evt){
         evt.preventDefault()
+        console.log("handleEditSubmit is running")
         const fields = {
             title: this.refs.editTitle.value, 
             description: this.refs.editDescription.value, 
@@ -35,13 +45,19 @@ class PartyShow extends React.Component {
             location: this.refs.editLocation.value
 
         }
-        clientAuth.updateParty(this.props.partyId, fields).then(res => {
+        console.log(fields)
+        console.log(this.state.party._id)
+        clientAuth.updateParty(this.state.party._id, fields).then((res => {
+            console.log(res.data)
             this.setState({
-                party: res.data
+                parties: this.state.parties.map((p)=>{
+                    if(p._id === res.data.party._id) return res.data.party
+                    return p
+                })
                 })
 
 
-        })
+        }))
        
 
     }
@@ -53,38 +69,59 @@ class PartyShow extends React.Component {
         })
     }
 
+    inviteOne(evt){
+        evt.preventDefault()
+        console.log(this)
+        console.log(this.state.party.invitees)
+        // this.setState({
+        //     invitees: [...this.state.invitees, this]
+        // })
+
+    }
+
 
     render(){
-        // console.log(this.state.party.title)
+        const { party } = this.state
         return(
             <div>
                 <h1>Here's your party</h1>
                 {this.state.party
                 ?
                 <div>
-                    <h1>it exists</h1>
                     <h2>{this.state.party.title}</h2>
                     <h3>{this.state.party.description}</h3>
                     <p>{this.state.party.date}</p>
                     <p>{this.state.party.location}</p> 
                 </div>
                 :
-                    <h1>it does not exist</h1>
+                   <h1>oops! No Party here anymore</h1>
                 }
                 <button>Delete</button>
                 <button onClick={this.makeEditTrue.bind(this)}>Edit Button</button>
-                {/* {this.state.edit
-                 ?
-                     <form key={party._id} onSubmit={this.handleEditSubmit.bind(this)}>
-                     <input type="text" defaultValue={this.state.party.title} ref="editTitle"></input>
-                     <input type="text" defaultValue={party.description} ref="editDescription"></input>
-                     <input type="date" defaultValue={party.date}  ref="editDate"></input>
-                     <input type="text" defaultValue={party.location} name="location" ref="editLocation"></input>
-                     <button>Update</button>
-                    </form>
-                 :null
-                } */}
-
+                    {this.state.edit
+                    ?
+                        <form key={party._id} onSubmit={this.handleEditSubmit.bind(this)}>
+                        <input type="text" defaultValue={party.title} ref="editTitle"></input>
+                        <input type="text" defaultValue={party.description} ref="editDescription"></input>
+                        <input type="date" defaultValue={party.date}  ref="editDate"></input>
+                        <input type="text" defaultValue={party.location} name="location" ref="editLocation"></input>
+                        <button>Update</button>
+                        </form>
+                    :null
+                    }
+                {/*Add button to toggle away invites*/}
+                <div id="UsersList">
+                    <ul>
+                        {this.state.users.map((u)=>{
+                            return <li id={u._id}>
+                                <button onClick={this.inviteOne.bind(this)}>Invite</button>
+                                {u.name}
+                                {u._id}
+                                </li>
+                         })} 
+                    </ul>
+                </div>
+                
                 
                
             </div>

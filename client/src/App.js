@@ -81,8 +81,7 @@ class App extends Component {
         {/* List of Users */}
         <Route exact path='/users' render={(props)=> {
           return currentUser
-              ? <UsersList users={this.state.users}
-              />
+              ? <UsersList />
             : <Redirect to="/login" />
         
         }}/>
