@@ -61,6 +61,10 @@ function createParty(fields) {
 	return clientAuth({ method: 'post', url: '/api/parties', data: fields })
 }
 
+function getParty(id){
+    return clientAuth({method:'get', url: `api/parties/${id}` })
+}
+
 function updateParty(id, fields) {
     return clientAuth({ method: 'patch', url: `api/parties/${id}`, data:fields})
 }
@@ -72,6 +76,7 @@ export default {
     logOut, 
     getParties, 
     createParty, 
+    getParty,
     updateParty
     
 }

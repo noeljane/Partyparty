@@ -5,6 +5,7 @@ import Chat from '../Chat/Chat.js'
 
 class PartyShow extends React.Component {
     state = {
+        parties: [],
         party: '', 
         invites: '', 
         going: '',
@@ -13,15 +14,26 @@ class PartyShow extends React.Component {
     }
 
     componentDidMount = () => {
-        // console.log(this.props.partyId)
-        // axios({method: 'get', url:`/parties/${this.props.partyId}`})
-        // .then((res) => {
+        clientAuth.getParty(this.props.partyId).then(res =>{
+            console.log(res.data)
+        } )
+        // clientAuth.getParties().then(res => {
+        //     console.log(res.data)
+        //     console.log(res.data.forEach((p)=>{
+        //         if(p._id === this.props.partyId){
+        //             return p
+        //         }
+        //     }))
+            
         //     this.setState({
-        //         party:res.data
+        //         party: res.data.map((p)=>{
+        //             if(p._id === this.props.partyId){
+        //                 return p
+        //             }
+        //         })
         //     })
         // })
         
-    //     })
 
     }
 
@@ -55,7 +67,7 @@ class PartyShow extends React.Component {
 
     render(){
         const { party } = this.state
-        console.log(this.state.party)
+        console.log(this.props.partyId)
         return(
             <div>
                 <h1>Here's your party</h1>
@@ -64,7 +76,6 @@ class PartyShow extends React.Component {
                     <p>{party.date}</p>
                     <p>{party.location}</p>
 
-                <Chat />
                 <button>Delete</button>
                 <button onClick={this.makeEditTrue.bind(this)}>Edit Button</button>
                 {this.state.edit

@@ -8,6 +8,8 @@ const
     //messagesRouter = new express.Router(), 
     messagesCtrl = require('../controllers/messages.js')
 
+
+
 partiesRouter.use(verifyToken)
 
 partiesRouter.route('/')

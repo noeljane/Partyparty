@@ -37,30 +37,6 @@ class PartyIndex extends React.Component {
         })
     }
 
-    
-    
-    // handleEditSubmit (evt){
-    //     evt.preventDefault()
-    //     const fields = {
-    //         title: this.refs.editTitle.value, 
-    //         description: this.refs.editDescription.value, 
-    //         date: this.refs.editDate.value,
-    //         location: this.refs.editLocation.value
-
-    //     }
-    //     clientAuth.updateParty(this.state.partyBeingEdited, fields).then(res => {
-    //         this.setState({
-    //             parties: this.state.parties.map((p) =>{
-    //                 if(p._id === res.data.party._id) return res.data.party
-    //                 return p
-    //             }),
-
-    //             partyBeingEdited: null
-
-    //         })
-    // //     })
-
-    // }
 
     render (){
         console.log(this.state)
