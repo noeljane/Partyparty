@@ -4,7 +4,7 @@ import React from 'react'
 import socketIOClient from 'socket.io-client'
 
 // const socket = openSocket('http://localhost:3001')
-const socket = socketIOClient("http://localhost:8000")
+const socket = socketIOClient()
 
 
 class Chat extends React.Component {
