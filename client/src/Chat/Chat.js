@@ -12,7 +12,8 @@ class Chat extends React.Component {
     state = { 
         endpoint: "http://localhost:8000", 
         message:'',
-        notes: [{note: "wassup", person: "sheila"}]
+        notes: [{note: "wassup", person: "sheila"}],
+
       }
 
     componentDidMount = () => {
@@ -26,7 +27,7 @@ class Chat extends React.Component {
     submitHandler = (evt) =>{
         evt.preventDefault()
         var newNote = {
-            note: this.refs.message.value, 
+            note: this.refs.message.value,
             person: this.refs.name.value
         }
         
@@ -35,13 +36,12 @@ class Chat extends React.Component {
     }
 
     render(){
-        console.log(this.state.notes)
         return(
             <div>
-            <h1>This is my chat, buddy</h1>
+            <h1>LIVE chat about this party</h1>
             <form>
                 <input ref="message" placeholder="message"></input>
-                <input ref="name" placeholder="name"></input>
+                <input type="hidden" ref="name" placeholder="name"></input>
                 <button onClick={this.submitHandler.bind(this)}>Submit</button>
             </form>
            <h2>Chat!</h2>

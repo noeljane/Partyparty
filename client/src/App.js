@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import './App.css';
 import { Switch, Route, Redirect } from 'react-router-dom'
 
+//NavBar
+import NavBar from './NavBar.js'
+
 //Users
 import UsersList from './Users/UsersList.js'
 import UserProfile from './Users/UserProfile.js'
@@ -45,6 +48,7 @@ class App extends Component {
     return (
       <div className="App">
       <h1>Party Party!</h1>
+      <NavBar />
       
       {currentUser ? <h2>{currentUser.name}</h2> : null}
       
@@ -98,7 +102,7 @@ class App extends Component {
         {/*Chat*/}
         <Route path="/chat" render={(routerProps) => {
           return currentUser
-              ? <Chat />
+              ? <Chat user={currentUser}/>
               : <Redirect to="login" />
         }}/>
 

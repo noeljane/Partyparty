@@ -70,12 +70,12 @@ class PartyShow extends React.Component {
     deleteThisParty(){
         //THIS DOESNT WORK!!!
         
-        // axios.deleteParty(this.props.partyId).then((res) => {
-        //     console.log(res.data)
-        //     this.setState({
-        //         party: null
-        //     })
-        // })
+        clientAuth.deleteParty(this.props.partyId).then((res) => {
+            console.log(res.data)
+            this.setState({
+                party: null
+            })
+        })
 
     }
 
@@ -108,6 +108,8 @@ class PartyShow extends React.Component {
                 :
                    <h1>oops! No Party here anymore</h1>
                 }
+
+                <Chat />
                 <button onClick={this.deleteThisParty.bind(this)}>Delete</button>
                 <button onClick={this.makeEditTrue.bind(this)}>Edit Party</button>
                     {this.state.edit

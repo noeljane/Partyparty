@@ -81,6 +81,7 @@ export default {
     getParties, 
     createParty, 
     getParty,
-    updateParty
+    updateParty,
+    deleteParty
     
 }
