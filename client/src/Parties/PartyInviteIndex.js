@@ -7,10 +7,31 @@ class PartyInviteIndex extends React.Component {
     state = {
         parties: []
     }
+
+    componentDidMount(){
+        clientAuth.getPartyInvites().then(res =>{
+            this.setState({
+                parties: res.data.reverse()
+            })
+        })
+    }
     
     render(){
+        console.log("party invite index says: ")
+        console.log(this.state.parties)
         return(
-            <h1>This is supposed to be a list of parties I'm invited to. </h1>
+            <div>
+                <h1>This is supposed to be a list of parties I'm invited to. </h1>
+                <ul>
+                    {this.state.parties.map((p)=>{
+                        return 
+                        <li key={p._id}>
+                            <Link to={`/parties/${p._id}`}></Link>
+                            {p.title}
+                        </li>
+                    })}
+                </ul>
+            </div>
         )
     }
 }

@@ -1,16 +1,16 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-const NavBar = (props)=> {
-    console.log("Navbar props" + props.user)
+const NavBar = (props) => {
+    const { currentUser } = props
     return (
         <div>
         <Link to="/">Home  </Link>
                 
-              { props.currentUser 
+              { currentUser
             ? (
                 <span>
-                    <Link to={`/users/currentUser.id`} >My Parties  </Link>
+                    <Link to={`/users/${currentUser._id}`} >My Parties  </Link>
                     <Link to="/logout">Log Out</Link>
                 </span>
             )

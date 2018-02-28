@@ -57,6 +57,10 @@ function getParties(){
     return clientAuth({ method: 'get', url: '/api/parties'})
 }
 
+function getPartyInvites(){
+    return clientAuth({ method: 'get', url: '/api/parties/invites'})
+}
+
 function createParty(fields) {
 	return clientAuth({ method: 'post', url: '/api/parties', data: fields })
 }
@@ -79,7 +83,8 @@ export default {
     logIn, 
     signUp,
     logOut, 
-    getParties, 
+    getParties,
+    getPartyInvites, 
     createParty, 
     getParty,
     updateParty,

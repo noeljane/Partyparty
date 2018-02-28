@@ -47,7 +47,7 @@ class Chat extends React.Component {
            <h2>Chat!</h2>
             <ul>
             {this.state.notes.map((n)=>{
-                return <li id={n.person}>{n.note} -{n.person}</li>
+                return <li id={n.person}>{n.note}-{n.person}</li>
             })}
             </ul>
             </div>
