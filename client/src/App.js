@@ -11,15 +11,10 @@ import LogOut from './Users/LogOut.js'
 import clientAuth from './clientAuth.js'
 
 //Parties
-import CreateParty from './Parties/CreateParty.js'
 import PartyShow from './Parties/PartyShow.js'
 
 //Messages
 import Chat from './Chat/Chat.js'
-
-
-
-
 
 
 class App extends Component {
@@ -89,7 +84,7 @@ class App extends Component {
               ? <UsersList users={this.state.users}
               />
             : <Redirect to="/login" />
-          return 
+        
         }}/>
         
         {/* Individual Users */}  
@@ -108,13 +103,6 @@ class App extends Component {
               : <Redirect to="login" />
         }}/>
 
-        {/* Create Party */}
-        <Route path='/parties/new' render={(routerProps) => {
-          return currentUser
-            ? <CreateParty />
-            : <Redirect to="/login" /> 
-          
-        }}/>
 
         {/* Party Show */}
         <Route path='/parties/:id' render={(routerProps) => {

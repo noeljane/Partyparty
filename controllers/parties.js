@@ -11,13 +11,13 @@ module.exports = {
     },
 
     // //list parties that I'm invited to
-    indexInvites: (req, res) => {
-        Party.find({invitees: req.user}, (err, parties) => {
-            if (err) console.log(err)
-            res.json(parties)
+    // indexInvites: (req, res) => {
+    //     Party.find({invitees: { $in: [req.user._id] } }, (err, parties) => {
+    //         if (err) console.log(err)
+    //         res.json(parties)
 
-        })
-    },
+    //     })
+    // },
 
     //list parties that I"m going to
         //to add later
@@ -43,7 +43,6 @@ module.exports = {
     //update an existing party
     update: (req, res) => {
         Party.findById(req.params.id, (err, party) => {
-            Object.assign(party, req.body)
             party.save((err, updatedParty) => {
                 if(err) res.json({success:false, code: err.code})
                 res.json({success:true, message: "Party upgraded!🎈" })
