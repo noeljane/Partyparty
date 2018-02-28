@@ -20,10 +20,18 @@ class PartyShow extends React.Component {
         clientAuth.getParties().then(res => {
             this.setState({
                 party: res.data.filter((p) => p._id === this.props.partyId)[0],
-                invitees: this.state.party.invitees
+                invitees: this.state.party.invitees, 
+                parties: res.data
             }), 
                 
             console.log('state is', this.state.party)
+        })
+
+        clientAuth.getParty(this.props.partyId).then(res => {
+            console.log(res.data)
+            this.setState({
+                party: res.data
+            })
         })
 
         axios({method: 'get', url: '/api/users'})
@@ -47,17 +55,17 @@ class PartyShow extends React.Component {
         }
         console.log(fields)
         console.log(this.state.party._id)
-        clientAuth.updateParty(this.state.party._id, fields).then((res => {
+        console.log("Party Id:" + this.props.partyId)
+        clientAuth.updateParty(this.props.partyId, fields).then((res => {
             console.log(res.data)
             this.setState({
-                parties: this.state.parties.map((p)=>{
-                    if(p._id === res.data.party._id) return res.data.party
-                    return p
-                })
+                party: res.data.party,
+                edit:!this.state.edit
                 })
 
 
         }))
+
        
 
     }
@@ -74,7 +82,7 @@ class PartyShow extends React.Component {
         console.log(this)
         console.log(this.state.party.invitees)
         // this.setState({
-        //     invitees: [...this.state.invitees, this]
+        //     invitees: [...this.state.party.invitees, user]
         // })
 
     }
@@ -113,7 +121,7 @@ class PartyShow extends React.Component {
                 <div id="UsersList">
                     <ul>
                         {this.state.users.map((u)=>{
-                            return <li id={u._id}>
+                            return <li key={u._id}>
                                 <button onClick={this.inviteOne.bind(this)}>Invite</button>
                                 {u.name}
                                 {u._id}

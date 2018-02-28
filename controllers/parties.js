@@ -45,7 +45,7 @@ module.exports = {
         Party.findById(req.params.id, (err, party) => {
             party.save((err, updatedParty) => {
                 if(err) res.json({success:false, code: err.code})
-                res.json({success:true, message: "Party upgraded!🎈" })
+                res.json({success:true, message: "Party upgraded!🎈", party: party })
             })
         })
 

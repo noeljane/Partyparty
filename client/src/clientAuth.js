@@ -62,11 +62,11 @@ function createParty(fields) {
 }
 
 function getParty(id){
-    return clientAuth({method:'get', url: `api/parties/${id}` })
+    return clientAuth({method:'get', url: `/api/parties/${id}` })
 }
 
 function updateParty(id, fields) {
-    return clientAuth({ method: 'patch', url: `api/parties/${id}`, data:fields})
+    return clientAuth({ method: 'patch', url: `/api/parties/${id}`, data:fields})
 }
 
 export default {
