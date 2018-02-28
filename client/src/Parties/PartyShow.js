@@ -128,42 +128,45 @@ class PartyShow extends React.Component {
                 </div>    
 
                 <Chat />
-                <button onClick={this.deleteThisParty.bind(this)}>Delete</button>
-                
-                
-                
-                <div id="for-user-only">
-                    <div id="edit-fields">
-                        <button onClick={this.makeEditTrue.bind(this)}>Edit Party</button>
-                            {this.state.edit
-                            ?
-                                <form key={party._id} onSubmit={this.handleEditSubmit.bind(this)}>
-                                <input type="text" defaultValue={party.title} ref="editTitle"></input>
-                                <input type="text" defaultValue={party.description} ref="editDescription"></input>
-                                <input type="date" defaultValue={party.date}  ref="editDate"></input>
-                                <input type="text" defaultValue={party.location} name="location" ref="editLocation"></input>
-                                <button>Update</button>
-                                </form>
-                            :null
-                            }
-                    </div>
+                {this.props.currentUser._id === party._by
+                ?
+                <div id="signed-in content">
+                    <button onClick={this.deleteThisParty.bind(this)}>Delete</button>
+                    <div id="for-user-only">
+                        <div id="edit-fields">
+                            <button onClick={this.makeEditTrue.bind(this)}>Edit Party</button>
+                                {this.state.edit
+                                ?
+                                    <form key={party._id} onSubmit={this.handleEditSubmit.bind(this)}>
+                                    <input type="text" defaultValue={party.title} ref="editTitle"></input>
+                                    <input type="text" defaultValue={party.description} ref="editDescription"></input>
+                                    <input type="date" defaultValue={party.date}  ref="editDate"></input>
+                                    <input type="text" defaultValue={party.location} name="location" ref="editLocation"></input>
+                                    <button>Update</button>
+                                    </form>
+                                :null
+                                }
+                        </div>
+                        
+                        {/*Add button to toggle away invites*/}
+                        <div id="UsersList">
+                            <h1>Invite More People to Your Party</h1>
+                            <ul>
+                                {this.state.users.map((u)=>{
+                                    return <li key={u._id}>
                     
-                    {/*Add button to toggle away invites*/}
-                    <div id="UsersList">
-                        <h1>Invite More People to Your Party</h1>
-                        <ul>
-                            {this.state.users.map((u)=>{
-                                return <li key={u._id}>
-                
-                            
-                                            <button onClick={this.inviteOne.bind(this, u)}>Invite</button>
-                                            <Link to={`/users/${u._id}`}>{u.name}
-                                            </Link>
-                                    </li>
-                            })} 
-                        </ul>
+                                
+                                                <button onClick={this.inviteOne.bind(this, u)}>Invite</button>
+                                                <Link to={`/users/${u._id}`}>{u.name}
+                                                </Link>
+                                        </li>
+                                })} 
+                            </ul>
+                        </div>
                     </div>
                 </div>
+                :
+                null}
                 
                 
                
