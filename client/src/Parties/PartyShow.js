@@ -125,7 +125,7 @@ class PartyShow extends React.Component {
                     </ul>
                 </div>    
 
-                {/* <Chat /> */}
+                <Chat />
                 <button onClick={this.deleteThisParty.bind(this)}>Delete</button>
                 <button onClick={this.makeEditTrue.bind(this)}>Edit Party</button>
                     {this.state.edit
@@ -141,6 +141,7 @@ class PartyShow extends React.Component {
                     }
                 {/*Add button to toggle away invites*/}
                 <div id="UsersList">
+                    <h1>Invite More People to Your Party</h1>
                     <ul>
                         {this.state.users.map((u)=>{
                             return <li key={u._id}>

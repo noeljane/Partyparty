@@ -10,14 +10,14 @@ module.exports = {
         })
     },
 
-    // //list parties that I'm invited to
-    // indexInvites: (req, res) => {
-    //     Party.find({invitees: { $in: [req.user._id] } }, (err, parties) => {
-    //         if (err) console.log(err)
-    //         res.json(parties)
+    //list parties that I'm invited to
+    indexInvites: (req, res) => {
+        Party.find({invitees: { $in: [req.user._id] } }, (err, parties) => {
+            if (err) console.log(err)
+            res.json(parties)
 
-    //     })
-    // },
+        })
+    },
 
     //list parties that I"m going to
         //to add later
