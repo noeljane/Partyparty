@@ -118,11 +118,16 @@ class PartyShow extends React.Component {
 
                 <div>
                     <h2>People going to the party</h2>
+                    {this.state.invitees
+                    ?
                     <ul>
                         {this.state.invitees.map((i)=>{
                             return <li key={i.name}>{i.name}</li>
                         })}
                     </ul>
+                    :
+                    null
+                    }
                 </div>    
 
                 <Chat />
@@ -148,8 +153,8 @@ class PartyShow extends React.Component {
             
                         
                                         <button onClick={this.inviteOne.bind(this, u)}>Invite</button>
-                                        {u.name}
-                                        {u._id}
+                                        <Link to={`/users/${u._id}`}>{u.name}
+                                        </Link>
                                 </li>
                          })} 
                     </ul>

@@ -64,7 +64,9 @@ class PartyIndex extends React.Component {
                     <ul>
                         {this.state.parties.map((p)=> {
                             return(
-                                <li key={p._id} >{p.title}{p._id} 
+                                <li key={p._id} >
+                            <Link to={`/parties/${p._id}`}>
+                                {p.title}</Link> 
                                 </li>
                             )
                             
