@@ -35,6 +35,7 @@ class PartyIndex extends React.Component {
                 this.refs.description.value = ''
                 this.refs.date.value = ''
                 this.refs.location.value = ''
+                
             }
         })
     }
