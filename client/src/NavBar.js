@@ -2,13 +2,15 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 
 const NavBar = (props)=> {
-    console.log(props)
+    console.log("Navbar props" + props.user)
     return (
-        <Link to="/">Home</Link>
-            {props.currentUser
+        <div>
+        <Link to="/">Home  </Link>
+                
+              { props.currentUser 
             ? (
                 <span>
-                    <Link to="/vip">VIP</Link>
+                    <Link to={`/users/currentUser.id`} >My Parties  </Link>
                     <Link to="/logout">Log Out</Link>
                 </span>
             )
@@ -19,8 +21,12 @@ const NavBar = (props)=> {
                 </span>
             )
         }
+        </div>
+    )
 
 }
+
+export default NavBar
 
 
     

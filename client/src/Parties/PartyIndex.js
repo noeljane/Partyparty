@@ -1,6 +1,8 @@
 import React from 'react'
 import clientAuth from '../clientAuth.js'
 
+import { Link } from 'react-router-dom'
+
 class PartyIndex extends React.Component {
     state = {
         parties: [], 
@@ -61,19 +63,8 @@ class PartyIndex extends React.Component {
                     <h1> Parties I made: </h1>
                     <ul>
                         {this.state.parties.map((p)=> {
-                            // return p._id === this.state.partyBeingEdited
-                            // ? (
-                            //     <form key={p._id} onSubmit={this.handleEditSubmit.bind(this)}>
-                            //         <input type="text" defaultValue={p.title} ref="editTitle"></input>
-                            //         <input type="text" defaultValue={p.description} ref="editDescription"></input>
-                            //         <input type="date" defaultValue={p.date}  ref="editDate"></input>
-                            //         <input type="text" defaultValue={p.location} name="location" ref="editLocation"></input>
-                            //         <button>Update</button>
-                            //     </form>
-                            // )
-                            // : (
                             return(
-                                <li key={p._id} > {p.title} Id: {p._id}
+                                <li key={p._id} >{p.title}{p._id} 
                                 </li>
                             )
                             

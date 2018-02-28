@@ -26,10 +26,19 @@ module.exports = {
     show: (req, res) =>{
         console.log("Current Party:")
         console.log(req.party)
-        Party.findById(req.params.id, (err,party) => {
-            if (err) console.log(err)
+        // Party.findById(req.params.id, (err,party) => {
+        //     if (err) console.log(err)
+        //     res.json(party)
+        // })
+        Party.findById(req.params.id)
+        .populate("invitees")
+        .exec((err, party) => {
+            if(err) console.log(err)
+            console.log(party)
             res.json(party)
+
         })
+
     },
 
     //create a new party
@@ -44,19 +53,23 @@ module.exports = {
     update: (req, res) => {
         Party.findById(req.params.id, (err, party) => {
             if(err) console.log(err)
+            party.invitees.push(req.body.userId)
             const updatedPartyData = {}
             for(field in req.body) {
                 if(req.body[field] !=="")
                 updatedPartyData[field] = req.body[field]
             }
+
             Object.assign(party, updatedPartyData)
             party.save((err, updatedParty) => {
                 if(err) res.json({success:false, code: err.code})
-                res.json({success:true, message: "Party upgraded!🎈", party: party })
+                res.json({success:true, message: "Party upgraded!🎈", party: updatedParty })
             })
         })
 
     },
+
+
 
     //delete an existing party
     destroy: (req, res) => {

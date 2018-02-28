@@ -7,7 +7,8 @@ class UserProfile extends React.Component {
         return(
             <div>
                 {/* This doesn't work!!! */}
-                <h1 id={this.props.user.id}>Hi {this.props.user.name}!</h1> 
+                <h1 id={this.props.user.id}>You're a party animal!</h1> 
+                <img src="https://media2.giphy.com/media/3o6fJ47X7rsRR9wDlu/200w.webp" />
                     <h3>Your Parties:</h3>
                     <PartyIndex />
 

@@ -48,7 +48,7 @@ class App extends Component {
     return (
       <div className="App">
       <h1>Party Party!</h1>
-      <NavBar />
+      <NavBar currentUser={currentUser}/>
       
       {currentUser ? <h2>{currentUser.name}</h2> : null}
       

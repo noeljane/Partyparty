@@ -1,5 +1,6 @@
 import React from 'react'
 import axios from 'axios'
+import { Link } from 'react-router-dom'
 
 import clientAuth from '../clientAuth.js'
 import Chat from '../Chat/Chat.js'
@@ -12,7 +13,7 @@ class PartyShow extends React.Component {
         going: '',
         edit: false, 
         user: '', 
-        users: [], 
+        users: []
     }
 
     componentDidMount = () => {
@@ -20,7 +21,7 @@ class PartyShow extends React.Component {
             console.log(res.data)
             this.setState({
                 party: res.data,
-                invitees: this.state.party.invitees
+                invitees: res.data.invitees
             })
         })
 
@@ -35,7 +36,6 @@ class PartyShow extends React.Component {
 
     handleEditSubmit (evt){
         evt.preventDefault()
-        console.log("handleEditSubmit is running")
         const fields = {
             title: this.refs.editTitle.value, 
             description: this.refs.editDescription.value, 
@@ -43,9 +43,6 @@ class PartyShow extends React.Component {
             location: this.refs.editLocation.value
 
         }
-        console.log(fields)
-        console.log(this.state.party._id)
-        console.log("Party Id:" + this.props.partyId)
         clientAuth.updateParty(this.props.partyId, fields).then((res => {
             console.log(res.data)
             this.setState({
@@ -79,15 +76,22 @@ class PartyShow extends React.Component {
 
     }
 
-    inviteOne (evt) {
-        evt.preventDefault()
-        console.log(this)
+    inviteOne (user) {
+        
+        console.log("invite one is running"
+        )
+        console.log(user)
         const fields = {
-            invitees: this.refs.user.value
+            userId: user._id
         }
-        // this.setState({
-        //     invitees: [...this.state.party.invitees, this.user]
-        // })
+        clientAuth.updateParty(this.props.partyId, fields).then((res => {
+            console.log(res.data)
+            this.setState({
+                invitees: [...this.state.invitees, user]
+                })
+
+
+        }))
 
     }
 
@@ -96,6 +100,7 @@ class PartyShow extends React.Component {
         const { party } = this.state
         return(
             <div>
+                <div>
                 <h1>Here's your party</h1>
                 {this.state.party
                 ?
@@ -108,8 +113,18 @@ class PartyShow extends React.Component {
                 :
                    <h1>oops! No Party here anymore</h1>
                 }
+                </div>
 
-                <Chat />
+                <div>
+                    <h2>People going to the party</h2>
+                    {/* <ul>
+                        {this.state.invitees.map((i)=>{
+                            <li key={i._id}> {i.name}</li>
+                        })}
+                    </ul> */}
+                </div>    
+
+                {/* <Chat /> */}
                 <button onClick={this.deleteThisParty.bind(this)}>Delete</button>
                 <button onClick={this.makeEditTrue.bind(this)}>Edit Party</button>
                     {this.state.edit
@@ -130,7 +145,7 @@ class PartyShow extends React.Component {
                             return <li key={u._id}>
             
                         
-                                        <button onSubmit={this.inviteOne.bind(this, u._id)}>Invite</button>
+                                        <button onClick={this.inviteOne.bind(this, u)}>Invite</button>
                                         {u.name}
                                         {u._id}
                                 </li>
