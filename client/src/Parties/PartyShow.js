@@ -14,28 +14,17 @@ class PartyShow extends React.Component {
     }
 
     componentDidMount = () => {
-        clientAuth.getParty(this.props.partyId).then(res =>{
-            console.log(res.data)
-        } )
-        // clientAuth.getParties().then(res => {
+        // clientAuth.getParty(this.props.partyId).then(res =>{
         //     console.log(res.data)
-        //     console.log(res.data.forEach((p)=>{
-        //         if(p._id === this.props.partyId){
-        //             return p
-        //         }
-        //     }))
-            
-        //     this.setState({
-        //         party: res.data.map((p)=>{
-        //             if(p._id === this.props.partyId){
-        //                 return p
-        //             }
-        //         })
-        //     })
-        // })
-        
-
+        // } )
+        clientAuth.getParties().then(res => {
+            this.setState({
+                party: res.data.filter((p) => p._id === this.props.partyId)[0]
+            })
+            console.log('state is', this.state.party)
+        })
     }
+  
 
     handleEditSubmit (evt){
         evt.preventDefault()
@@ -66,29 +55,35 @@ class PartyShow extends React.Component {
 
 
     render(){
-        const { party } = this.state
-        console.log(this.props.partyId)
+        // console.log(this.state.party.title)
         return(
             <div>
                 <h1>Here's your party</h1>
-                    <h2>{party.title}</h2>
-                    <h3>{party.description}</h3>
-                    <p>{party.date}</p>
-                    <p>{party.location}</p>
-
+                {this.state.party
+                ?
+                <div>
+                    <h1>it exists</h1>
+                    <h2>{this.state.party.title}</h2>
+                    <h3>{this.state.party.description}</h3>
+                    <p>{this.state.party.date}</p>
+                    <p>{this.state.party.location}</p> 
+                </div>
+                :
+                    <h1>it does not exist</h1>
+                }
                 <button>Delete</button>
                 <button onClick={this.makeEditTrue.bind(this)}>Edit Button</button>
-                {this.state.edit
+                {/* {this.state.edit
                  ?
                      <form key={party._id} onSubmit={this.handleEditSubmit.bind(this)}>
-                     <input type="text" defaultValue={party.title} ref="editTitle"></input>
+                     <input type="text" defaultValue={this.state.party.title} ref="editTitle"></input>
                      <input type="text" defaultValue={party.description} ref="editDescription"></input>
                      <input type="date" defaultValue={party.date}  ref="editDate"></input>
                      <input type="text" defaultValue={party.location} name="location" ref="editLocation"></input>
                      <button>Update</button>
                     </form>
                  :null
-                }
+                } */}
 
                 
                
