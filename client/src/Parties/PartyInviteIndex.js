@@ -21,14 +21,16 @@ class PartyInviteIndex extends React.Component {
         console.log(this.state.parties)
         return(
             <div>
-                <h1>This is supposed to be a list of parties I'm invited to. </h1>
+                
                 <ul>
-                    {this.state.parties.map((p)=>{
-                        return 
-                        <li key={p._id}>
-                            <Link to={`/parties/${p._id}`}></Link>
-                            {p.title}
-                        </li>
+                   
+                    {this.state.parties.map((p)=> {
+                            return(
+                                <li key={p._id} >
+                            <Link to={`/parties/${p._id}`}>
+                                {p.title}</Link> 
+                                </li>
+                            )
                     })}
                 </ul>
             </div>

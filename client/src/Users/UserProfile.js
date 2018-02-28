@@ -13,8 +13,7 @@ class UserProfile extends React.Component {
                     <h3>Your Parties:</h3>
                         <PartyIndex />
 
-                    <h3>Parties You're Attending: </h3>
-                        <p>create a party index of this </p>
+                    <h3>Parties I'm Attending: </h3>
                         <PartyInviteIndex />
                         
                 
