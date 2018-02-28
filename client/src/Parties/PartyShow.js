@@ -131,9 +131,7 @@ class PartyShow extends React.Component {
                 <button onClick={this.deleteThisParty.bind(this)}>Delete</button>
                 
                 
-                {
-                this.props.currentUser._id === this.state.party._by}
-                ?
+                
                 <div id="for-user-only">
                     <div id="edit-fields">
                         <button onClick={this.makeEditTrue.bind(this)}>Edit Party</button>
@@ -165,8 +163,6 @@ class PartyShow extends React.Component {
                             })} 
                         </ul>
                     </div>
-                    : null
-                    }
                 </div>
                 
                 
