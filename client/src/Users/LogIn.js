@@ -39,6 +39,7 @@ class LogIn extends React.Component{
         const { email, password } = this.state.fields
         return (
             <div>
+                <img src="https://media0.giphy.com/media/s2qXK8wAvkHTO/giphy.gif" />
                 <h1>Log In</h1>
                 <form onChange={this.onInputChange.bind(this)} onSubmit={this.onFormSubmit.bind(this)}>
                     <input type="text" placeholder="email" name="email" ref={email}></input>
