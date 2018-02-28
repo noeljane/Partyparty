@@ -42,7 +42,7 @@ io.on('connection', function(socket) {
     })
     
 })
-io.listen(8000)
+// io.listen(8000)
 
 //Root
 app.get('/', (req,res) => {
@@ -65,6 +65,6 @@ app.get('*', (req, res) => {
 })
 
 //Server Listen
-app.listen(PORT, (err) =>{
+http.listen(PORT, (err) =>{
     console.log(err || `Server running on port ${PORT}.`)
 })
