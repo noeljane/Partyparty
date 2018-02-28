@@ -7,17 +7,21 @@ class PartyShow extends React.Component {
     state = {
         party: '', 
         invites: '', 
-        going: ''
+        going: '',
+        edit: false, 
+        user: ''
     }
 
     componentDidMount = () => {
-        console.log(this.props.partyId)
-        axios({method: 'get', url:`/parties/${this.props.partyId}`})
-        .then((res) => {
-            this.setState({
-                party:res.data
-            })
-        })
+        // console.log(this.props.partyId)
+        // axios({method: 'get', url:`/parties/${this.props.partyId}`})
+        // .then((res) => {
+        //     this.setState({
+        //         party:res.data
+        //     })
+        // })
+        
+    //     })
 
     }
 
@@ -30,23 +34,28 @@ class PartyShow extends React.Component {
             location: this.refs.editLocation.value
 
         }
-        clientAuth.updateParty(this.state.partyBeingEdited, fields).then(res => {
+        clientAuth.updateParty(this.props.partyId, fields).then(res => {
             this.setState({
-                parties: this.state.parties.map((p) =>{
-                    if(p._id === res.data.party._id) return res.data.party
-                    return p
-                }),
+                party: res.data
+                })
 
-                partyBeingEdited: null
 
-            })
         })
+       
 
+    }
+
+    makeEditTrue(){
+        this.setState({
+            edit:!this.state.edit
+
+        })
     }
 
 
     render(){
         const { party } = this.state
+        console.log(this.state.party)
         return(
             <div>
                 <h1>Here's your party</h1>
@@ -56,14 +65,22 @@ class PartyShow extends React.Component {
                     <p>{party.location}</p>
 
                 <Chat />
+                <button>Delete</button>
+                <button onClick={this.makeEditTrue.bind(this)}>Edit Button</button>
+                {this.state.edit
+                 ?
+                     <form key={party._id} onSubmit={this.handleEditSubmit.bind(this)}>
+                     <input type="text" defaultValue={party.title} ref="editTitle"></input>
+                     <input type="text" defaultValue={party.description} ref="editDescription"></input>
+                     <input type="date" defaultValue={party.date}  ref="editDate"></input>
+                     <input type="text" defaultValue={party.location} name="location" ref="editLocation"></input>
+                     <button>Update</button>
+                    </form>
+                 :null
+                }
+
                 
-                <form key={party._id} onSubmit={this.handleEditSubmit.bind(this)}>
-                    <input type="text" defaultValue={party.title} ref="editTitle"></input>
-                    <input type="text" defaultValue={party.description} ref="editDescription"></input>
-                    <input type="date" defaultValue={party.date}  ref="editDate"></input>
-                    <input type="text" defaultValue={party.location} name="location" ref="editLocation"></input>
-                    <button>Update</button>
-                </form>
+               
             </div>
         )
     }

@@ -58,7 +58,7 @@ class PartyIndex extends React.Component {
     //             partyBeingEdited: null
 
     //         })
-    //     })
+    // //     })
 
     // }
 
@@ -83,25 +83,28 @@ class PartyIndex extends React.Component {
 
                 <div id="my-parties">
                     <h1> Parties I made: </h1>
-                    {/* <ul>
+                    <ul>
                         {this.state.parties.map((p)=> {
-                            return p._id === this.state.partyBeingEdited
-                            ? (
-                                <form key={p._id} onSubmit={this.handleEditSubmit.bind(this)}>
-                                    <input type="text" defaultValue={p.title} ref="editTitle"></input>
-                                    <input type="text" defaultValue={p.description} ref="editDescription"></input>
-                                    <input type="date" defaultValue={p.date}  ref="editDate"></input>
-                                    <input type="text" defaultValue={p.location} name="location" ref="editLocation"></input>
-                                    <button>Update</button>
-                                </form>
-                            )
-                            : (
-                                <li key={p._id} onClick={this.editParty.bind(this, p._id)}> {p.title} Id: {p._id}
+                            // return p._id === this.state.partyBeingEdited
+                            // ? (
+                            //     <form key={p._id} onSubmit={this.handleEditSubmit.bind(this)}>
+                            //         <input type="text" defaultValue={p.title} ref="editTitle"></input>
+                            //         <input type="text" defaultValue={p.description} ref="editDescription"></input>
+                            //         <input type="date" defaultValue={p.date}  ref="editDate"></input>
+                            //         <input type="text" defaultValue={p.location} name="location" ref="editLocation"></input>
+                            //         <button>Update</button>
+                            //     </form>
+                            // )
+                            // : (
+                            return(
+                                <li key={p._id} > {p.title} Id: {p._id}
                                 </li>
                             )
+                            
                         })}
-                    </ul> */}
-                </div>
+                    </ul> 
+                    </div>
+                    
 
 
             </div>
