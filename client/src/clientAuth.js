@@ -75,7 +75,7 @@ function updateParty(id, fields) {
 }
 
 function deleteParty(id){
-    return clientAuth({ method: 'destroy', url: `/api/parties/${id}`})
+    return clientAuth({ method: 'delete', url: `/api/parties/${id}`})
 }
 
 export default {

@@ -110,7 +110,7 @@ class App extends Component {
         {/* Party Show */}
         <Route path='/parties/:id' render={(routerProps) => {
             return currentUser
-              ? <PartyShow partyId={routerProps.match.params.id}/>
+              ? <PartyShow  history={routerProps.history} currentUser={currentUser} partyId={routerProps.match.params.id}/>
               : <Redirect to="/login" />
         }}/>
  

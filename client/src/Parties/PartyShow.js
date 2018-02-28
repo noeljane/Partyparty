@@ -1,6 +1,6 @@
 import React from 'react'
 import axios from 'axios'
-import { Link } from 'react-router-dom'
+import { Redirect, Link } from 'react-router-dom'
 
 import clientAuth from '../clientAuth.js'
 import Chat from '../Chat/Chat.js'
@@ -65,13 +65,10 @@ class PartyShow extends React.Component {
     }
 
     deleteThisParty(){
-        //THIS DOESNT WORK!!!
-        
+        alert("Are you sure you want to delete this?")
         clientAuth.deleteParty(this.props.partyId).then((res) => {
             console.log(res.data)
-            this.setState({
-                party: null
-            })
+            this.props.history.push('/')
         })
 
     }
@@ -98,7 +95,7 @@ class PartyShow extends React.Component {
 
     render(){
         const { party } = this.state
-        console.log("invitees: " + this.state.invitees)
+        console.log(this.props.currentUser)
         return(
             <div>
                 <div>
@@ -122,7 +119,7 @@ class PartyShow extends React.Component {
                     ?
                     <ul>
                         {this.state.invitees.map((i)=>{
-                            return <li key={i.name}>{i.name}</li>
+                            return <li key={i._id}>{i.name}</li>
                         })}
                     </ul>
                     :
@@ -132,32 +129,44 @@ class PartyShow extends React.Component {
 
                 <Chat />
                 <button onClick={this.deleteThisParty.bind(this)}>Delete</button>
-                <button onClick={this.makeEditTrue.bind(this)}>Edit Party</button>
-                    {this.state.edit
-                    ?
-                        <form key={party._id} onSubmit={this.handleEditSubmit.bind(this)}>
-                        <input type="text" defaultValue={party.title} ref="editTitle"></input>
-                        <input type="text" defaultValue={party.description} ref="editDescription"></input>
-                        <input type="date" defaultValue={party.date}  ref="editDate"></input>
-                        <input type="text" defaultValue={party.location} name="location" ref="editLocation"></input>
-                        <button>Update</button>
-                        </form>
-                    :null
+                
+                
+                {
+                this.props.currentUser._id === this.state.party._by}
+                ?
+                <div id="for-user-only">
+                    <div id="edit-fields">
+                        <button onClick={this.makeEditTrue.bind(this)}>Edit Party</button>
+                            {this.state.edit
+                            ?
+                                <form key={party._id} onSubmit={this.handleEditSubmit.bind(this)}>
+                                <input type="text" defaultValue={party.title} ref="editTitle"></input>
+                                <input type="text" defaultValue={party.description} ref="editDescription"></input>
+                                <input type="date" defaultValue={party.date}  ref="editDate"></input>
+                                <input type="text" defaultValue={party.location} name="location" ref="editLocation"></input>
+                                <button>Update</button>
+                                </form>
+                            :null
+                            }
+                    </div>
+                    
+                    {/*Add button to toggle away invites*/}
+                    <div id="UsersList">
+                        <h1>Invite More People to Your Party</h1>
+                        <ul>
+                            {this.state.users.map((u)=>{
+                                return <li key={u._id}>
+                
+                            
+                                            <button onClick={this.inviteOne.bind(this, u)}>Invite</button>
+                                            <Link to={`/users/${u._id}`}>{u.name}
+                                            </Link>
+                                    </li>
+                            })} 
+                        </ul>
+                    </div>
+                    : null
                     }
-                {/*Add button to toggle away invites*/}
-                <div id="UsersList">
-                    <h1>Invite More People to Your Party</h1>
-                    <ul>
-                        {this.state.users.map((u)=>{
-                            return <li key={u._id}>
-            
-                        
-                                        <button onClick={this.inviteOne.bind(this, u)}>Invite</button>
-                                        <Link to={`/users/${u._id}`}>{u.name}
-                                        </Link>
-                                </li>
-                         })} 
-                    </ul>
                 </div>
                 
                 
