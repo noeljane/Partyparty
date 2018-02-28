@@ -9,7 +9,7 @@ import UsersList from '../Users/UsersList.js'
 class PartyShow extends React.Component {
     state = {
         party: '', 
-        invitees: '', 
+        invitees: [], 
         going: '',
         edit: false, 
         user: '', 
@@ -98,6 +98,7 @@ class PartyShow extends React.Component {
 
     render(){
         const { party } = this.state
+        console.log("invitees: " + this.state.invitees)
         return(
             <div>
                 <div>
@@ -117,11 +118,11 @@ class PartyShow extends React.Component {
 
                 <div>
                     <h2>People going to the party</h2>
-                    {/* <ul>
+                    <ul>
                         {this.state.invitees.map((i)=>{
-                            <li key={i._id}> {i.name}</li>
+                            return <li key={i.name}>{i.name}</li>
                         })}
-                    </ul> */}
+                    </ul>
                 </div>    
 
                 {/* <Chat /> */}
