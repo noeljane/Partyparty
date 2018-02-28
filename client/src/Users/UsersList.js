@@ -8,7 +8,7 @@ class UsersList extends React.Component{
 
     componentDidMount = () => {   
         //User Index
-        axios({method: 'get', url: '/users'})
+        axios({method: 'get', url: '/api/users'})
           .then((res) => { 
             this.setState({
               users: res.data
@@ -23,6 +23,7 @@ class UsersList extends React.Component{
                 return <li id={u._id}>
                 <button>Invite</button>
                 {u.name}
+                {u._id}
                 </li>
             })} 
             </ul>

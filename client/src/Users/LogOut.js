@@ -7,7 +7,7 @@ class LogOut extends React.Component {
        this.props.onLogOut()
    }
 
-    return (){
+    render (){
         return <Redirect to="/login"/>
     }
 }

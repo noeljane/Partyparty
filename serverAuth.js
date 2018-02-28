@@ -18,14 +18,18 @@ function verifyToken(req,res, next) {
     // if no token, deny access
     if(!token) return res.json({success: false, message: "No token provided"})
     //otherwise try to verify token 
-    User.findById(decodedData._id, (err,user) =>{
-        // if no user, deny access
-        if(!user) return res.json({success: false, message: "Invalid token."})
-        //otherwise, add user to req object
-        req.user = user
-        //Now, you have access to any user on any route that requires authentication
-        // go on to process the route: 
-        next()
+    
+    jwt.verify(token, process.env.JWT_SECRET, (err, decodedData) => {
+        if(err) return res.json({success: false, message: "Invalid token."})
+        User.findById(decodedData._id, (err,user) =>{
+            // if no user, deny access
+            if(!user) return res.json({success: false, message: "Invalid token."})
+            //otherwise, add user to req object
+            req.user = user
+            //Now, you have access to any user on any route that requires authentication
+            // go on to process the route: 
+            next()
+        })
     })
 } 
 

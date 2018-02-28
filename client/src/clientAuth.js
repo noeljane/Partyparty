@@ -20,7 +20,7 @@ function getCurrentUser(){
 }
 
 function logIn(credentials) {
-    return clientAuth({method: 'post', url: '/users/authenticate', data: credentials})
+    return clientAuth({method: 'post', url: '/api/users/authenticate', data: credentials})
     .then(res => {
         const token = res.data.token
         if(token) {
@@ -34,7 +34,7 @@ function logIn(credentials) {
 }
 
 function signUp(userInfo) {
-    return clientAuth({method: 'post', url: '/users', data: userInfo})
+    return clientAuth({method: 'post', url: '/api/users', data: userInfo})
     .then(res => {
         const token = res.data.token
         if(token) {
@@ -54,7 +54,11 @@ function logOut(){
 }
 
 function getParties(){
-    return clientAuth({ method: 'get', url: '/parties'})
+    return clientAuth({ method: 'get', url: '/api/parties'})
+}
+
+function createParties(fields) {
+	return clientAuth({ method: 'post', url: '/api/parties', data: fields })
 }
 
 export default {
@@ -62,6 +66,7 @@ export default {
     logIn, 
     signUp,
     logOut, 
-    getParties
+    getParties, 
+    createParties
     
 }

@@ -51,10 +51,10 @@ app.get('/', (req,res) => {
 
 
 //Users Routes
-app.use('/users', usersRoutes)
+app.use('/api/users', usersRoutes)
 
 //Party Routes
-app.use('/parties', partiesRoutes)
+app.use('/api/parties', partiesRoutes)
 
 // //Message Routes
 // app.use('/messages', messagesRoutes)

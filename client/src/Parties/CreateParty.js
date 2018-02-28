@@ -1,38 +1,31 @@
 import React from 'react'
+import clientAuth from '../clientAuth.js'
 import axios from 'axios'
 
 import UsersList from '../Users/UsersList.js'
 
 class CreateParty extends React.Component {
     state = {
-        fields: {
-            title: '', 
-            description: '', 
-            date: '',
-            location: ''
-
-        }, 
-        parties: []
+        party: {}
     }
     
+
     componentDidMount(){
-        axios({method: 'get', url:'/parties'})
-        .then((res) => {
-            console.log(res.data)
-            this.setState({
-                parties: res.data
-            })
-        })
+       
 
     }
     
 
     submitInfo = (evt) => {
         evt.preventDefault()
-        console.log(this.refs.title.value)
+        clientAuth.createParties().then((res) => {
+            this.setState({
+                parties: res.data
+            })
+        })
         axios({
             method: 'post', 
-            url: '/parties', 
+            url: '/api/parties', 
             data: {
                 title: this.refs.title.value, 
                 description: this.refs.description.value, 
