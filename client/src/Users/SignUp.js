@@ -42,7 +42,7 @@ class SignUp extends React.Component {
                 <form onChange={this.onInputChange.bind(this)} onSubmit={this.onFormSubmit.bind(this)}>
                     <input type="text" placeholder="Name" name="name" value={name}/>
                     <input type="text" placeholder="Email" name="email" value={email}/>
-                    <input type="text" placeholder="Password" name="password" value={password}></input>
+                    <input type="password" placeholder="Password" name="password" value={password}></input>
                     <button>Sign Up</button>
                 </form>
             </div>
