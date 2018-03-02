@@ -45,6 +45,19 @@ Back-end:
 (To see all npm packages used, please go to the package.json file both in the main directory and in the client directory)
 
 
-Here's the trello board: 
+###General Approach
+
+1. Ideation
+2. Planning
+3. Make MVP socket.io chat with React
+4. Build backend
+5. Build front-end with React. 
+
+
+**Here's the trello board: **
 https://trello.com/b/PladwX3R/party-party-project-4
+
+-write more here about this experience
+
+###
 
