@@ -44,6 +44,7 @@ Back-end:
 
 (To see all npm packages used, please go to the package.json file both in the main directory and in the client directory)
 
+--
 
 ###General Approach
 
@@ -59,5 +60,28 @@ https://trello.com/b/PladwX3R/party-party-project-4
 
 -write more here about this experience
 
-###
+--
+
+### Installation Instructions
+
+To start out, you can go [here:](https://tranquil-reaches-93920.herokuapp.com/users/5a97215e5340540014dd200c
+) 
+
+If you'd like to run the repo locally, follow these instructions: 
+
+1. Clone this repo locally
+2. Run an npm install 
+3. In 2 new tabs on your terminal, run nodemon and mongod. 
+4. In a third new tab on your terminal, navigate to the client directory and run npm start. 
+
+--
+
+###User Stories
+
+--
+
+###WireFrames
+
+--
+
 
