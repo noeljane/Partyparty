@@ -1,21 +1,5 @@
 # Partyparty
 
-### Necessary Deliverables
-
-* A **working API**, hosted somewhere on the internet
-* A **working front-end**, hosted somewhere on the internet
-* A **link to your hosted working app** in the URL section of your Github repo
-* A **git repository hosted on Github**, with a link to your hosted project, and frequent commits dating back to the very beginning of the project
-* **A ``readme.md`` file** with:
-    * An embedded screenshot of the app
-    * Explanations of the **technologies** used
-    * A couple paragraphs about the **general approach you took**
-    * **Installation instructions** for any dependencies
-    * Link to your **user stories** – who are your users, what do they want, and why?
-    * Link to your **wireframes** – sketches of major views / interfaces in your application
-    * **OPTIONAL**: Link to your **pitch deck** – documentation of your wireframes, user stories, and proposed architecture
-    * Descriptions of any **unsolved problems** or **major hurdles** you had to overcome
-
 --
 ###Description
 
@@ -77,11 +61,15 @@ If you'd like to run the repo locally, follow these instructions:
 --
 
 ###User Stories
+Who are users? What do they want and why? 
 
 --
 
 ###WireFrames
 
 --
+
+###Unsolved Problems/Major Hurdles: 
+
 
 
