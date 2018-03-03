@@ -3,7 +3,7 @@
 --
 ###Description
 
-![](./screenshots/chatshot.png)
+![](./screenshots/chatshot.png )
 
 This app is designed to help you make parties and invite your friends. It includes a special feature where you live chat about the party using socket.io. 
 
@@ -48,7 +48,7 @@ https://trello.com/b/PladwX3R/party-party-project-4
 
 ### Installation Instructions
 
-To start out, you can go [here:](https://tranquil-reaches-93920.herokuapp.com/users/5a97215e5340540014dd200c
+For a quick start, you can go [here:](https://tranquil-reaches-93920.herokuapp.com/users/5a97215e5340540014dd200c
 ) 
 
 If you'd like to run the repo locally, follow these instructions: 
@@ -63,6 +63,13 @@ If you'd like to run the repo locally, follow these instructions:
 ###User Stories
 Who are users? What do they want and why? 
 
+As a user:
+I want to be able to create party. 
+I want to be able to invite my friends to the party
+I want to be able to chat with my friends about the party
+
+
+
 --
 
 ###WireFrames
@@ -70,6 +77,8 @@ Who are users? What do they want and why?
 --
 
 ###Unsolved Problems/Major Hurdles: 
+
+
 
 
 
