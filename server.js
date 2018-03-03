@@ -11,7 +11,7 @@ const
     logger = require('morgan'),
     bodyParser = require('body-parser'),
     mongoose = require('mongoose'),
-    MONGODB_URI ='mongodb://localhost/partyParty',
+    MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost/partyParty',
     //PORT = process.env.PORT || 3001,
     //http = require('http').Server(app),
     //io = require('socket.io')(http),

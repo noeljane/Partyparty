@@ -40,12 +40,26 @@ class LogIn extends React.Component{
         return (
             <div>
                 <img src="https://media0.giphy.com/media/s2qXK8wAvkHTO/giphy.gif" />
+
+                <div>
                 <h1>Log In</h1>
                 <form onChange={this.onInputChange.bind(this)} onSubmit={this.onFormSubmit.bind(this)}>
-                    <input type="text" placeholder="email" name="email" ref={email}></input>
-                    <input type="password" placeholder="password" name="password" value={password}></input>
-                    <button>Log In</button>
-                </form>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Email address</label>
+                        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="email" name="email" ref={email}
+                        />
+        
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputPassword1">Password</label>
+                        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" ref="password" name="password" value={password}></input>
+                        
+                    </div>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                    </form>
+                </div>
+
+                
             </div>
         )
     }

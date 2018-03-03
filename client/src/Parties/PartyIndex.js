@@ -62,6 +62,7 @@ class PartyIndex extends React.Component {
 
                 <div id="my-parties">
                     <h3> Parties I made: </h3>
+                    <div>
                     <ul>
                         {this.state.parties.map((p)=> {
                             return(
@@ -73,6 +74,7 @@ class PartyIndex extends React.Component {
                             
                         })}
                     </ul> 
+                    </div>
                     </div>
                     
 
