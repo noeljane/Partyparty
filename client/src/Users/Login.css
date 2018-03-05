@@ -5,6 +5,7 @@ body {
 }
 
 h1{
+    background-color:white;
     padding:10px;
 }
 
@@ -12,14 +13,9 @@ h1{
 
 form,label,input {
     display: inline-block;
-    /* flex-wrap:wrap; */
     text-align:center;
+    background-color: white;
     
    
-}
-
-#login-submit-button{
-    padding: 15px;
-
 }
 

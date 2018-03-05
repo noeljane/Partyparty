@@ -41,9 +41,10 @@ class LogIn extends React.Component{
         return (
             <div>
                 <img src="https://media0.giphy.com/media/s2qXK8wAvkHTO/giphy.gif" />
-                <h1>Log In</h1>
 
                 <div id="login-form">
+                
+                <h1>Log In</h1>
                     
                     <form onChange={this.onInputChange.bind(this)} onSubmit={this.onFormSubmit.bind(this)}>
                 
