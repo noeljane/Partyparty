@@ -1,12 +1,14 @@
 body {
     text-align: center;
-    background-image: url("https://images.pexels.com/photos/255379/pexels-photo-255379.jpeg?w=940&h=650&dpr=2&auto=compress&cs=tinysrgb "); 
-    background-size:cover;
+    background-image: url("http://backgroundlabs.com/wp-content/uploads/2013/05/pastel-polka-dot-background-120x90.png"); 
+  
 }
 
 h1{
     padding:10px;
 }
+
+
 
 form,label,input {
     display: inline-block;

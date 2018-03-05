@@ -47,7 +47,7 @@ class App extends Component {
     const { currentUser } = this.state
     return (
       <div className="App">
-      <h1>Party Party!</h1>
+      {/* <h1>Party Party!</h1> */}
       <NavBar currentUser={currentUser}/>
       
       {currentUser ? <h2>{currentUser.name}</h2> : null}
