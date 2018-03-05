@@ -37,15 +37,43 @@ class SignUp extends React.Component {
         console.log(this.state.fields.email)
         console.log(this.state.fields.password)
         return (
+            
             <div>
                 <h1>Sign Up to make more parties!</h1>
-                <form onChange={this.onInputChange.bind(this)} onSubmit={this.onFormSubmit.bind(this)}>
-                    <input type="text" placeholder="Name" name="name" value={name}/>
-                    <input type="text" placeholder="Email" name="email" value={email}/>
-                    <input type="password" placeholder="Password" name="password" value={password}></input>
-                    <button>Sign Up</button>
-                </form>
+
+
+                <div id="signup-form">
+                    
+                    <form onChange={this.onInputChange.bind(this)} onSubmit={this.onFormSubmit.bind(this)}>
+
+                    <div className="col-sm-12">
+                        <label for="exampleInputName">Name</label>
+                        <input id="name" type="text" className="form-control" id="exampleInputName1" aria-describedby="nameHelp" placeholder="name" name="name" value={name}
+                        />
+        
+                    </div>
+                
+                    <div className="col-sm-12">
+                        <label for="exampleInputEmail1">Email address</label>
+                        <input id="email" type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="email" name="email" value={email}
+                        />
+        
+                    </div>
+                    
+                    <div className="col-sm-12">
+                        <label for="exampleInputPassword1">Password</label>
+                        <input type="password" className="form-control" id="exampleInputPassword1" placeholder="Password" ref="password" name="password" value={password}></input>
+                        
+                    </div>
+                    <div className="col-auto my-12" id="login-submit-button">
+                        <button type="submit" className="btn btn-primary">Submit</button>
+                    </div>
+                   
+                    </form>
+                </div> 
+             
             </div>
+        
         )
     }
 }

@@ -61,6 +61,7 @@ class App extends Component {
             <LogIn
               onLoginSuccess={this.onLogin.bind(this)}
               history={routerProps.history}
+              user={currentUser}
             />
           )
         }}/>

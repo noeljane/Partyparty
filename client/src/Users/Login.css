@@ -1,0 +1,23 @@
+body {
+    text-align: center;
+    background-image: url("https://images.pexels.com/photos/255379/pexels-photo-255379.jpeg?w=940&h=650&dpr=2&auto=compress&cs=tinysrgb "); 
+    background-size:cover;
+}
+
+h1{
+    padding:10px;
+}
+
+form,label,input {
+    display: inline-block;
+    /* flex-wrap:wrap; */
+    text-align:center;
+    
+   
+}
+
+#login-submit-button{
+    padding: 15px;
+
+}
+

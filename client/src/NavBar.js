@@ -5,7 +5,6 @@ const NavBar = (props) => {
     const { currentUser } = props
     return (
         <div>
-        <Link to="/">Home  </Link>
                 
               { currentUser
             ? (
