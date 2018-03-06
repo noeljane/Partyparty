@@ -92,10 +92,30 @@ class PartyShow extends React.Component {
 
     }
 
+    deleteOne (user) {
+        console.log("delete one is running")
+        console.log(user)
+        const fields = {
+            userId: user._id
+        }
+        this.state.invitees.indexOf(user)
+        clientAuth.updateParty(this.props.partyId, fields).then((res => {
+            console.log(res.data)
+            var array = this.state.invitees
+            var index = array.indexOf(user)
+            array.splice(index,1)
+
+            this.setState({
+                invitees: [...array]
+            })
+        }))
+    }
+
 
     render(){
         const { party } = this.state
         console.log(this.props.currentUser)
+        console.log(this.state.invitees)
         return(
             <div>
                 <div>
@@ -119,7 +139,10 @@ class PartyShow extends React.Component {
                     ?
                     <ul>
                         {this.state.invitees.map((i)=>{
-                            return <li key={i._id}>{i.name}</li>
+                            return <li key={i._id}>
+                                        {i.name}
+                                        <button onClick={this.deleteOne.bind(this)}>Delete invite</button>
+                                 </li>
                         })}
                     </ul>
                     :

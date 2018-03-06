@@ -3,7 +3,7 @@ import axios from 'axios'
 
 class UsersList extends React.Component{
     state = {
-        users: []
+        users: [],
     }
 
     componentDidMount = () => {   
@@ -16,6 +16,7 @@ class UsersList extends React.Component{
           })
       }
 
+    
     render(){
         return(
             <ul>
