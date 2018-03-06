@@ -7,7 +7,7 @@ class UserProfile extends React.Component {
     render(){
         return(
             <div>
-                <img src="https://media2.giphy.com/media/3o6fJ47X7rsRR9wDlu/200w.webp" />
+                <img alt="Koala dancing to a boombox" src="https://media2.giphy.com/media/3o6fJ47X7rsRR9wDlu/200w.webp" />
                 <h1 id={this.props.user.id}>You're a party animal!</h1> 
                     <h3>Your Parties:</h3>
                         <PartyIndex />

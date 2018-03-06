@@ -4,7 +4,6 @@ import { Redirect, Link } from 'react-router-dom'
 
 import clientAuth from '../clientAuth.js'
 import Chat from '../Chat/Chat.js'
-import UsersList from '../Users/UsersList.js'
 
 class PartyShow extends React.Component {
     state = {
@@ -18,7 +17,6 @@ class PartyShow extends React.Component {
 
     componentDidMount = () => {
         clientAuth.getParty(this.props.partyId).then(res => {
-            console.log(res.data)
             this.setState({
                 party: res.data,
                 invitees: res.data.invitees
@@ -44,7 +42,6 @@ class PartyShow extends React.Component {
 
         }
         clientAuth.updateParty(this.props.partyId, fields).then((res => {
-            console.log(res.data)
             this.setState({
                 party: res.data.party,
                 edit:!this.state.edit
@@ -67,22 +64,16 @@ class PartyShow extends React.Component {
     deleteThisParty(){
         alert("Are you sure you want to delete this?")
         clientAuth.deleteParty(this.props.partyId).then((res) => {
-            console.log(res.data)
             this.props.history.push('/')
         })
 
     }
 
     inviteOne (user) {
-        
-        console.log("invite one is running"
-        )
-        console.log(user)
         const fields = {
             userId: user._id
         }
         clientAuth.updateParty(this.props.partyId, fields).then((res => {
-            console.log(res.data)
             this.setState({
                 invitees: [...this.state.invitees, user]
                 })
@@ -95,18 +86,16 @@ class PartyShow extends React.Component {
     deleteOne (user) {
         console.log("delete one is running")
         console.log(user)
+
         const fields = {
             userId: user._id
         }
-        this.state.invitees.indexOf(user)
+
+        console.log(this.state.invitees.indexOf(user))
         clientAuth.updateParty(this.props.partyId, fields).then((res => {
             console.log(res.data)
-            var array = this.state.invitees
-            var index = array.indexOf(user)
-            array.splice(index,1)
-
             this.setState({
-                invitees: [...array]
+                invitees: []
             })
         }))
     }
@@ -176,7 +165,7 @@ class PartyShow extends React.Component {
                             <h1>Invite More People to Your Party</h1>
                             <ul>
                                 {this.state.users.map((u)=>{
-                                    return <li key={u._id}>
+                                    return <li key={u._id + "invite"}>
                     
                                 
                                                 <button onClick={this.inviteOne.bind(this, u)}>Invite</button>
