@@ -6,7 +6,7 @@ const NavBar = (props) => {
     return (
         <div>
             <nav class="navbar navbar-expand-lg navbar-light bg-light">
-                <a class="navbar-brand" href="/">Party Party 🎉 </a>
+                <a class="navbar-brand" href="/">Party Party</a>
                 { currentUser
                 ? (
                     <div>

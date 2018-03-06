@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom'
 class PartyIndex extends React.Component {
     state = {
         parties: [], 
+        createParty: false, 
         
     }
     
@@ -40,13 +41,21 @@ class PartyIndex extends React.Component {
         })
     }
 
+    makeCreatePartyTrue(){
+        this.setState({
+            createParty:!this.state.createParty
+        })
+    }
+
 
     render (){
         console.log(this.state)
         return (
             <div id="allDemParties">
                 
-
+                <button onClick={this.makeCreatePartyTrue.bind(this)}>Create Party</button>
+                {this.state.createParty
+                ?
                  <div id="create-parties">
         
                     <h1>Let's Throw a Party </h1>
@@ -59,6 +68,9 @@ class PartyIndex extends React.Component {
                     </form>
                     
                 </div>
+                :
+                null
+                }
 
                 <div id="my-parties">
                     <h3> Parties I made: </h3>
