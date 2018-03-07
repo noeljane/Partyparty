@@ -70,30 +70,37 @@ class PartyShow extends React.Component {
     }
 
     inviteOne (user) {
-        const fields = {
-            userId: user._id
+        function checkAvailability(arr, val) {
+            return arr.some(arrVal => val === arrVal)
         }
-        clientAuth.updateParty(this.props.partyId, fields).then((res => {
-            this.setState({
-                invitees: [...this.state.invitees, user]
-                })
 
-
-        }))
+        if (checkAvailability(this.state.invitees, user)) {
+            alert("You already invited this person")
+        } else {
+            const fields = {
+                userId: user._id
+            }
+    
+            
+            clientAuth.updateParty(this.props.partyId, fields).then((res => {
+                this.setState({
+                    invitees: [...this.state.invitees, user]
+                    })
+    
+    
+            }))
+        }  
 
     }
 
     deleteOne (user) {
-        console.log("delete one is running")
-        console.log(user)
-    
 
         const fields = {
             invitees: this.state.invitees.filter((i) => {
                 return i._id !== user._id
             })
         }
-        console.log(fields)
+
         clientAuth.updateParty(this.props.partyId, fields).then((res => {
             console.log(res.data)
             this.setState({
@@ -114,8 +121,6 @@ class PartyShow extends React.Component {
         // date.getMonth()     // 11
         // date.getDate()      // 29
         // date.getFullYear()  // 2011
-        console.log("invitees:")
-        console.log(this.state)
         return(
             <div>
                 <div>
