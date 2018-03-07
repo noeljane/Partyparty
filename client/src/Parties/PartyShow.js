@@ -1,6 +1,6 @@
 import React from 'react'
 import axios from 'axios'
-import { Redirect, Link } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 import clientAuth from '../clientAuth.js'
 import Chat from '../Chat/Chat.js'
@@ -88,23 +88,33 @@ class PartyShow extends React.Component {
         console.log(user)
 
         const fields = {
-            userId: user._id
-        }
-
-        console.log(this.state.invitees.indexOf(user))
-        clientAuth.updateParty(this.props.partyId, fields).then((res => {
-            console.log(res.data)
-            this.setState({
-                invitees: []
+            invitees: this.state.invitees.filter((i) => {
+                return i !== user._id
             })
-        }))
+        }
+        console.log(fields.invitees)
+
+        
+        // clientAuth.updateParty(this.props.partyId, fields).then((res => {
+        //     console.log(res.data)
+        //     this.setState({
+        //         invitees: fields.invitees
+        //     })
+        // }))
     }
 
 
     render(){
         const { party } = this.state
-        console.log(this.props.currentUser)
-        console.log(this.state.invitees)
+        
+        console.log(this.state.party.date)
+        const date = this.state.party.date
+        //new Date (date)
+        //date.toDateString() // "Thu Dec 29 2011"
+        // date.toUTCString()  // "Fri, 30 Dec 2011 02:14:56 GMT"
+        // date.getMonth()     // 11
+        // date.getDate()      // 29
+        // date.getFullYear()  // 2011
         return(
             <div>
                 <div>
@@ -128,7 +138,7 @@ class PartyShow extends React.Component {
                     ?
                     <ul>
                         {this.state.invitees.map((i)=>{
-                            return <li key={i._id}>
+                            return <li key={i._id + i.name}>
                                         {i.name}
                                         <button onClick={this.deleteOne.bind(this)}>Delete invite</button>
                                  </li>

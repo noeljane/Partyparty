@@ -40,7 +40,7 @@ class LogIn extends React.Component{
         const { email, password } = this.state.fields
         return (
             <div>
-                <img src="https://media0.giphy.com/media/s2qXK8wAvkHTO/giphy.gif" />
+                <img alt="man with mustache blows confetti" src="https://media0.giphy.com/media/s2qXK8wAvkHTO/giphy.gif" />
 
                 <div id="login-form">
                 

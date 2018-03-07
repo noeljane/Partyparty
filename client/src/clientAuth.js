@@ -70,7 +70,7 @@ function getParty(id){
 }
 
 function updateParty(id, fields) {
-    console.log("this is the field:",fields)
+    console.log("this is the field:", fields)
     return clientAuth({ method: 'patch', url: `/api/parties/${id}`, data:fields})
 }
 
