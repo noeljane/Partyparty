@@ -26,7 +26,7 @@ class PartyInviteIndex extends React.Component {
                    
                     {this.state.parties.map((p)=> {
                             return(
-                                <li key={p._id + this.props.currentUser._id} >
+                                <li key={p._id} >
                             <Link to={`/parties/${p._id}`}>
                                 {p.title}</Link> 
                                 </li>

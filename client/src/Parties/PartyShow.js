@@ -86,35 +86,36 @@ class PartyShow extends React.Component {
     deleteOne (user) {
         console.log("delete one is running")
         console.log(user)
+    
 
         const fields = {
             invitees: this.state.invitees.filter((i) => {
-                return i !== user._id
+                return i._id !== user._id
             })
         }
-        console.log(fields.invitees)
-
-        
-        // clientAuth.updateParty(this.props.partyId, fields).then((res => {
-        //     console.log(res.data)
-        //     this.setState({
-        //         invitees: fields.invitees
-        //     })
-        // }))
+        console.log(fields)
+        clientAuth.updateParty(this.props.partyId, fields).then((res => {
+            console.log(res.data)
+            this.setState({
+                invitees: fields.invitees
+            })
+        }))
     }
 
 
     render(){
         const { party } = this.state
         
-        console.log(this.state.party.date)
-        const date = this.state.party.date
+        // console.log(this.state.party.date)
+        // const date = this.state.party.date
         //new Date (date)
         //date.toDateString() // "Thu Dec 29 2011"
         // date.toUTCString()  // "Fri, 30 Dec 2011 02:14:56 GMT"
         // date.getMonth()     // 11
         // date.getDate()      // 29
         // date.getFullYear()  // 2011
+        console.log("invitees:")
+        console.log(this.state)
         return(
             <div>
                 <div>
@@ -140,7 +141,7 @@ class PartyShow extends React.Component {
                         {this.state.invitees.map((i)=>{
                             return <li key={i._id + i.name}>
                                         {i.name}
-                                        <button onClick={this.deleteOne.bind(this)}>Delete invite</button>
+                                        <button onClick={this.deleteOne.bind(this, i)}>Delete invite</button>
                                  </li>
                         })}
                     </ul>
