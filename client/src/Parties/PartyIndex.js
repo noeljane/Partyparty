@@ -63,17 +63,48 @@ class PartyIndex extends React.Component {
                 <div id="my-parties">
                     <h3> Parties I made: </h3>
                     <div>
-                    <ul>
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">Special title treatment</h5>
+                                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                                <a href="#" class="btn btn-primary">Go somewhere</a>
+                            </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">Special title treatment</h5>
+                                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                                <a href="#" class="btn btn-primary">Go somewhere</a>
+                            </div>
+                            </div>
+                        </div>
+                        </div>
+                    <div class="container">
+                    <div class="row">
                         {this.state.parties.map((p)=> {
                             return(
-                                <li key={p._id} >
-                            <Link to={`/parties/${p._id}`}>
-                                {p.title}</Link> 
-                                </li>
+                                <div class="col-sm-3">
+                                <div class="card" key={p._id}>
+                                <div class="card-body">
+                                    <h5 class="card-title">Special title treatment</h5>
+                                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                                    <a href="#" class="btn btn-primary">Go somewhere</a>
+                                </div>
+                                </div>
+                            </div>
+                            //     <li key={p._id} >
+                            // <Link to={`/parties/${p._id}`}>
+                            //     {p.title}</Link> 
+                            //     </li>
                             )
                             
                         })}
-                    </ul> 
+                    </div> 
+                    </div>
                     </div>
                     </div>
                     
