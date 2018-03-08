@@ -76,7 +76,7 @@ class PartyIndex extends React.Component {
                     <h3> Parties I made: </h3>
                 <div>
                     <div class="container">
-                    <div class="row">
+                        <div class="row">
                         {this.state.parties.map((p)=> {
                             return(
                                 <div class="col-sm-3">
@@ -86,8 +86,8 @@ class PartyIndex extends React.Component {
                                     <h5 class="card-title">{p.title}</h5>
                                     <a href={`/parties/${p._id}`} class="btn btn-primary">Party</a>
                                 </div>
-                                </div>
-                            </div>
+                        </div>
+                    </div>
                             //     <li key={p._id} >
                             // <Link to={`/parties/${p._id}`}>
                             //     {p.title}</Link> 

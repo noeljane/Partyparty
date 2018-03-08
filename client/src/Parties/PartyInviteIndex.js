@@ -22,6 +22,7 @@ class PartyInviteIndex extends React.Component {
         return(
             <div>
                 
+                
                 <ul>
                    
                     {this.state.parties.map((p)=> {
