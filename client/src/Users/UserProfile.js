@@ -14,11 +14,7 @@ class UserProfile extends React.Component {
 
                     <h3>Parties I'm Attending: </h3>
                         <PartyInviteIndex />
-                        
-                
-                <button>Create Party</button>
 
-               
             </div>
 
         )
