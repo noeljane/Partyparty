@@ -1,12 +1,20 @@
 body {
     text-align: center;
-    /* background-image: url("http://backgroundlabs.com/wp-content/uploads/2013/05/pastel-polka-dot-background-120x90.png");  */
+   
   
 }
 
-h1{
+h1 {
+    text-align: center;
     background-color:white;
     padding:10px;
+    width: 25%;
+   margin: 0 auto;
+}
+
+img {
+    padding-top: 10px;
+    padding-bottom: 25px;
 }
 
 
@@ -15,7 +23,13 @@ form,label,input {
     display: inline-block;
     text-align:center;
     background-color: white;
+    width: 25%;
+    margin: 0 auto;
     
    
+}
+
+#login-submit-button {
+    padding-top: 10px;
 }
 

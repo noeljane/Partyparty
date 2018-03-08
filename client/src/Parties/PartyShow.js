@@ -75,7 +75,7 @@ class PartyShow extends React.Component {
         }
 
         if (checkAvailability(this.state.invitees, user)) {
-            alert("You already invited this person")
+            alert("You already invited this person, silly!")
         } else {
             const fields = {
                 userId: user._id

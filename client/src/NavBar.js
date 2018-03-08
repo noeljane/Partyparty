@@ -1,12 +1,15 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import {Navbar} from 'react-bootstrap';
+import {NavItem} from 'react-bootstrap';
+import {Nav} from 'react-bootstrap';
 import './Navbar.css'
 
 const NavBar = (props) => {
     const { currentUser } = props
     return (
-        <div>
-            <nav className="navbar navbar-expand-lg navbar-light bg-light">
+        <div id="navbar-body">
+            <nav className="navbar navbar-expand-lg navbar-light bg-light" id="navvy" >
                 <a className="navbar-brand" href="/">Party Party</a>
                 { currentUser
                 ? (
