@@ -6,7 +6,6 @@ import { Switch, Route, Redirect } from 'react-router-dom'
 import NavBar from './NavBar.js'
 
 //Users
-import UsersList from './Users/UsersList.js'
 import UserProfile from './Users/UserProfile.js'
 import LogIn from './Users/LogIn.js'
 import SignUp from './Users/SignUp.js'
@@ -83,13 +82,6 @@ class App extends Component {
           )
         }}/>
 
-        {/* List of Users */}
-        <Route exact path='/users' render={(props)=> {
-          return currentUser
-              ? <UsersList />
-            : <Redirect to="/login" />
-        
-        }}/>
         
         {/* Individual Users */}  
         <Route path="/users/:id" render={(routerProps) => {

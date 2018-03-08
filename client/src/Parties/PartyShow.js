@@ -1,10 +1,9 @@
 import React from 'react'
 import axios from 'axios'
-import { Redirect, Link } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 import clientAuth from '../clientAuth.js'
 import Chat from '../Chat/Chat.js'
-import UsersList from '../Users/UsersList.js'
 
 class PartyShow extends React.Component {
     state = {
@@ -18,7 +17,6 @@ class PartyShow extends React.Component {
 
     componentDidMount = () => {
         clientAuth.getParty(this.props.partyId).then(res => {
-            console.log(res.data)
             this.setState({
                 party: res.data,
                 invitees: res.data.invitees
@@ -44,7 +42,6 @@ class PartyShow extends React.Component {
 
         }
         clientAuth.updateParty(this.props.partyId, fields).then((res => {
-            console.log(res.data)
             this.setState({
                 party: res.data.party,
                 edit:!this.state.edit
@@ -67,35 +64,63 @@ class PartyShow extends React.Component {
     deleteThisParty(){
         alert("Are you sure you want to delete this?")
         clientAuth.deleteParty(this.props.partyId).then((res) => {
-            console.log(res.data)
             this.props.history.push('/')
         })
 
     }
 
     inviteOne (user) {
-        
-        console.log("invite one is running"
-        )
-        console.log(user)
-        const fields = {
-            userId: user._id
+        function checkAvailability(arr, val) {
+            return arr.some(arrVal => val === arrVal)
         }
+
+        if (checkAvailability(this.state.invitees, user)) {
+            alert("You already invited this person, silly!")
+        } else {
+            const fields = {
+                userId: user._id
+            }
+    
+            
+            clientAuth.updateParty(this.props.partyId, fields).then((res => {
+                this.setState({
+                    invitees: [...this.state.invitees, user]
+                    })
+    
+    
+            }))
+        }  
+
+    }
+
+    deleteOne (user) {
+
+        const fields = {
+            invitees: this.state.invitees.filter((i) => {
+                return i._id !== user._id
+            })
+        }
+
         clientAuth.updateParty(this.props.partyId, fields).then((res => {
             console.log(res.data)
             this.setState({
-                invitees: [...this.state.invitees, user]
-                })
-
-
+                invitees: fields.invitees
+            })
         }))
-
     }
 
 
     render(){
         const { party } = this.state
-        console.log(this.props.currentUser)
+        
+        // console.log(this.state.party.date)
+        // const date = this.state.party.date
+        //new Date (date)
+        //date.toDateString() // "Thu Dec 29 2011"
+        // date.toUTCString()  // "Fri, 30 Dec 2011 02:14:56 GMT"
+        // date.getMonth()     // 11
+        // date.getDate()      // 29
+        // date.getFullYear()  // 2011
         return(
             <div>
                 <div>
@@ -119,7 +144,10 @@ class PartyShow extends React.Component {
                     ?
                     <ul>
                         {this.state.invitees.map((i)=>{
-                            return <li key={i._id}>{i.name}</li>
+                            return <li key={i._id + i.name}>
+                                        {i.name}
+                                        <button onClick={this.deleteOne.bind(this, i)}>Delete invite</button>
+                                 </li>
                         })}
                     </ul>
                     :
@@ -153,7 +181,7 @@ class PartyShow extends React.Component {
                             <h1>Invite More People to Your Party</h1>
                             <ul>
                                 {this.state.users.map((u)=>{
-                                    return <li key={u._id}>
+                                    return <li key={u._id + "invite"}>
                     
                                 
                                                 <button onClick={this.inviteOne.bind(this, u)}>Invite</button>

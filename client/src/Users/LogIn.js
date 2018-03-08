@@ -40,17 +40,21 @@ class LogIn extends React.Component{
         const { email, password } = this.state.fields
         return (
             <div>
-                <img src="https://media0.giphy.com/media/s2qXK8wAvkHTO/giphy.gif" />
+                <img alt="man with mustache blows confetti" src="https://media0.giphy.com/media/s2qXK8wAvkHTO/giphy.gif" />
+                 <div id="Login-h1">
+                    <h1>Log In</h1>
+                </div>
+                
 
                 <div id="login-form">
                 
-                <h1>Log In</h1>
+                    
                     
                     <form onChange={this.onInputChange.bind(this)} onSubmit={this.onFormSubmit.bind(this)}>
                 
                     <div className="col-sm-12">
-                        <label for="exampleInputEmail1">Email address</label>
-                        <input id="email" type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="email" name="email" ref={email}
+                        <label for="exampleInputEmail1">Email </label>
+                        <input id="email" type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Email" name="email" ref={email}
                         />
         
                     </div>

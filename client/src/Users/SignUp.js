@@ -1,5 +1,6 @@
 import React from 'react'
 import clientAuth from '../clientAuth.js'
+import signUp from './Signup.css'
 
 class SignUp extends React.Component {
     state = {
@@ -39,7 +40,8 @@ class SignUp extends React.Component {
         return (
             
             <div>
-                <h1>Sign Up to make more parties!</h1>
+                <div class="container">
+                <h1>Sign Up!</h1>
 
 
                 <div id="signup-form">
@@ -54,7 +56,7 @@ class SignUp extends React.Component {
                     </div>
                 
                     <div className="col-sm-12">
-                        <label for="exampleInputEmail1">Email address</label>
+                        <label for="exampleInputEmail1">Email</label>
                         <input id="email" type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="email" name="email" value={email}
                         />
         
@@ -62,7 +64,7 @@ class SignUp extends React.Component {
                     
                     <div className="col-sm-12">
                         <label for="exampleInputPassword1">Password</label>
-                        <input type="password" className="form-control" id="exampleInputPassword1" placeholder="Password" ref="password" name="password" value={password}></input>
+                        <input type="password" className="form-control" id="exampleInputPassword1" placeholder="password" ref="password" name="password" value={password}></input>
                         
                     </div>
                     <div className="col-auto my-12" id="login-submit-button">
@@ -72,6 +74,7 @@ class SignUp extends React.Component {
                     </form>
                 </div> 
              
+            </div>
             </div>
         
         )

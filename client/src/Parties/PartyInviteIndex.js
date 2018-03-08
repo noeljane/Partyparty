@@ -15,10 +15,10 @@ class PartyInviteIndex extends React.Component {
             })
         })
     }
+
+    
     
     render(){
-        console.log("party invite index says: ")
-        console.log(this.state.parties)
         return(
             <div>
                 

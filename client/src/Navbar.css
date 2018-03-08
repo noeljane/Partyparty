@@ -1,0 +1,26 @@
+.navbar {
+    text-align: center;
+    align-content: center;
+ 
+}
+
+a {
+    color: white;
+}
+
+
+.navbar-toggler {
+    background: white;
+    text-decoration-color: grey;
+}
+
+.navbar-toggler-icon {
+    color: white;
+}
+
+#navbarNavAltMarkup{
+    color: black;
+}
+#navvy {
+    background-color: #c2bded !important;
+}
