@@ -28,7 +28,7 @@
 }
 
 body {
-  background-image: url("./pictures/polkadot.jpeg");
-
+  /* background-image: url("./pictures/polkadot.jpeg"); */
+  font-family:'Lobster', cursive;
 }
 

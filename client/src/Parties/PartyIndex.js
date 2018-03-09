@@ -13,7 +13,7 @@ class PartyIndex extends React.Component {
     componentDidMount(){
         clientAuth.getParties().then(res => {
             this.setState({
-                parties: res.data.reverse()
+                parties: res.data
             })
         })
     }
@@ -81,7 +81,7 @@ class PartyIndex extends React.Component {
                             return(
                                 <div class="col-sm-3">
                                 <div class="card" key={p._id}>
-                                <img class="card-img-top" src="https://images.pexels.com/photos/796605/pexels-photo-796605.jpeg?h=350&dpr=2&auto=compress&cs=tinysrgb" alt="Card image cap"/>
+                                <img class="card-img-top" src="https://images.unsplash.com/photo-1452289765185-5df11aa2a706?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=4c302ce494ec330e11e26f862e2743e5&auto=format&fit=crop&w=800&q=60" alt="Card image cap"/>
                                 <div class="card-body">
                                     <h5 class="card-title">{p.title}</h5>
                                     <a href={`/parties/${p._id}`} class="btn btn-primary">Party</a>
