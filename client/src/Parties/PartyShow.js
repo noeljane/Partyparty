@@ -133,7 +133,7 @@ class PartyShow extends React.Component {
                     <label>Title:</label>
                     <h2>{this.state.party.title}</h2>
                     <label>Description:</label>
-                    <h3> Description{this.state.party.description}</h3>
+                    <h3>{this.state.party.description}</h3>
                     <label>Date:</label>
                     <p>{this.state.party.date}</p>
                     <label>Location:</label>
@@ -143,7 +143,7 @@ class PartyShow extends React.Component {
                    <h1>oops! No Party here anymore</h1>
                 }
                 </div>
-
+                <Chat />
                 <div>
                     <h2>People going to the party</h2>
                     {this.state.invitees
@@ -163,7 +163,7 @@ class PartyShow extends React.Component {
                         {this.state.invitees.map((i)=> {
                             return(
                                 <div class="col-sm-3">
-                                <div class="card" key={i._id}>
+                                <div class="card" key={i._id+this.state.party._id}>
                                 <img class="card-img-top" src="https://images.unsplash.com/photo-1496707783091-854ecd84ae5e?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=83ad261f046b896efc451f7e8ae165af&auto=format&fit=crop&w=800&q=60"/>
                                 <div class="card-body">
                                     <h5 class="card-title">{i.name}</h5>
@@ -183,7 +183,7 @@ class PartyShow extends React.Component {
                     }
                 </div>    
 
-                <Chat />
+               
                 {this.props.currentUser._id === party._by
                 ?
                 <div id="signed-in content">
@@ -206,7 +206,7 @@ class PartyShow extends React.Component {
                         
                         {/*Add button to toggle away invites*/}
                         <div id="UsersList">
-                            <h1>Invite More People to Your Party</h1>
+                            {/* <h1>Invite More People to Your Party</h1>
                             <ul>
                                 {this.state.users.map((u)=>{
                                     return <li key={u._id + "invite"}>
@@ -217,7 +217,28 @@ class PartyShow extends React.Component {
                                                 </Link>
                                         </li>
                                 })} 
-                            </ul>
+                            </ul> */}
+                            <div class="container">
+                        <div class="row">
+                        {this.state.users.map((u)=> {
+                            return(
+                                <div class="col-sm-3">
+                                <div class="card" key={u._id}>
+                                <img class="card-img-top" src="https://images.unsplash.com/photo-1469598614039-ccfeb0a21111?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=cbb9f4a2a8e81e5f7946577e6b8a55f1&auto=format&fit=crop&w=700&q=60"/>
+                                <div class="card-body">
+                                    <h5 class="card-title">{u.name}</h5>
+                                    <button onClick={this.inviteOne.bind(this, u)}class="btn btn-primary">Invite</button>
+                                    
+
+                                </div>
+                        </div>
+                        </div>
+                            
+                            )
+                            
+                        })}
+                        </div> 
+                        </div>
                         </div>
                     </div>
                 </div>
