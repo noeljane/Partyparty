@@ -5,6 +5,8 @@ import { Link } from 'react-router-dom'
 import clientAuth from '../clientAuth.js'
 import Chat from '../Chat/Chat.js'
 
+import './PartyShow.css'
+
 class PartyShow extends React.Component {
     state = {
         party: '', 
@@ -127,10 +129,14 @@ class PartyShow extends React.Component {
                 <h1>Here's your party</h1>
                 {this.state.party
                 ?
-                <div>
+                <div id="party-box">
+                    <label>Title:</label>
                     <h2>{this.state.party.title}</h2>
-                    <h3>{this.state.party.description}</h3>
+                    <label>Description:</label>
+                    <h3> Description{this.state.party.description}</h3>
+                    <label>Date:</label>
                     <p>{this.state.party.date}</p>
+                    <label>Location:</label>
                     <p>{this.state.party.location}</p> 
                 </div>
                 :
@@ -142,14 +148,36 @@ class PartyShow extends React.Component {
                     <h2>People going to the party</h2>
                     {this.state.invitees
                     ?
-                    <ul>
-                        {this.state.invitees.map((i)=>{
-                            return <li key={i._id + i.name}>
-                                        {i.name}
-                                        <button onClick={this.deleteOne.bind(this, i)}>Delete invite</button>
-                                 </li>
+                    // <ul>
+                    //     {this.state.invitees.map((i)=>{
+                    //         return <li key={i._id + i.name}>
+                    //                     {i.name}
+                    //                     <button onClick={this.deleteOne.bind(this, i)}>Delete invite</button>
+                    //              </li>
+                    //     })}
+                    // </ul>
+
+
+                        <div class="container">
+                        <div class="row">
+                        {this.state.invitees.map((i)=> {
+                            return(
+                                <div class="col-sm-3">
+                                <div class="card" key={i._id}>
+                                <img class="card-img-top" src="https://images.unsplash.com/photo-1496707783091-854ecd84ae5e?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=83ad261f046b896efc451f7e8ae165af&auto=format&fit=crop&w=800&q=60"/>
+                                <div class="card-body">
+                                    <h5 class="card-title">{i.name}</h5>
+                                    <button onClick={this.deleteOne.bind(this, i)} class="btn btn-primary">Delete invite</button>
+
+                                </div>
+                        </div>
+                        </div>
+                            
+                            )
+                            
                         })}
-                    </ul>
+                        </div> 
+                        </div>
                     :
                     null
                     }
