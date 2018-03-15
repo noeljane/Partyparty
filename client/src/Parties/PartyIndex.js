@@ -49,7 +49,7 @@ class PartyIndex extends React.Component {
 
 
     render (){
-        console.log(this.state)
+        console.log(this.state.parties)
         return (
             <div id="allDemParties">
                 
@@ -71,10 +71,12 @@ class PartyIndex extends React.Component {
                 :
                 null
                 }
-
+                
                 <div id="my-parties">
                     <h3> Parties I made: </h3>
                 <div>
+                    {this.state.parties
+                    ?
                     <div class="container">
                         <div class="row">
                         {this.state.parties.map((p)=> {
@@ -88,15 +90,17 @@ class PartyIndex extends React.Component {
                                 </div>
                         </div>
                     </div>
-                            //     <li key={p._id} >
-                            // <Link to={`/parties/${p._id}`}>
-                            //     {p.title}</Link> 
-                            //     </li>
+            
                             )
                             
                         })}
+
+                    
                     </div> 
                     </div>
+                    : 
+                    null
+                    }
                     </div>
                     </div>
                     
