@@ -129,9 +129,17 @@ class PartyShow extends React.Component {
         return(
             <div>
                 <div>
+                <img src="https://images.unsplash.com/photo-1478145787956-f6f12c59624d?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=bff5e556c06be1406af5eb0ec8bfb7c6&auto=format&fit=crop&w=800&q=60" />
                 <h1>Here's your party</h1>
                 {this.state.party
                 ?
+                <div>
+                {/* <div class="card" style="width: 18rem;">
+                    <img class="card-img-top" src="..." alt="Card image cap"/>
+                    <div class="card-body">
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    </div>
+                </div> */}
                 <div id="party-box">
                     <label>Title:</label>
                     <h2>{this.state.party.title}</h2>
@@ -141,6 +149,7 @@ class PartyShow extends React.Component {
                     <p>{this.state.party.date}</p>
                     <label>Location:</label>
                     <p>{this.state.party.location}</p> 
+                </div>
                 </div>
                 :
                    <h1>oops! No Party here anymore</h1>
