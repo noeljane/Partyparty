@@ -78,12 +78,12 @@ class PartyIndex extends React.Component {
                     {this.state.parties
                     ?
                     <div className="container">
-                        <div class="row">
+                        <div className="row">
                         {this.state.parties.map((p)=> {
                             return(
                                 <div className="col-sm-3">
-                                <div className="card" key={p._id}>
-                                <img className="card-img-top" src="https://images.unsplash.com/photo-1481016570479-9eab6349fde7?ixlib=rb-0.3.5&s=3cc0a309c344e5a34b359e5a663a16cc&auto=format&fit=crop&w=800&q=60" alt="Card image cap"/>
+                                <div className="card" key={p._id + "my party"}>
+                                <img className="card-img-top" src="https://images.unsplash.com/photo-1481016570479-9eab6349fde7?ixlib=rb-0.3.5&s=3cc0a309c344e5a34b359e5a663a16cc&auto=format&fit=crop&w=800&q=60" alt="fun party pink background"/>
                                 <div className="card-body">
                                     <h5 className="card-title">{p.title}</h5>
                                     <a href={`/parties/${p._id}`} className="btn btn-primary">Party</a>
