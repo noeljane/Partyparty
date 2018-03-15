@@ -40,7 +40,7 @@ class Chat extends React.Component {
             <div>
             <h1>LIVE chat about this party</h1>
             <form>
-                <input ref="message" placeholder="message"></input>
+                <textarea ref="message" placeholder="message"></textarea>
                 <input type="hidden" ref="name" placeholder="name"></input>
                 <button onClick={this.submitHandler.bind(this)}>Submit</button>
             </form>

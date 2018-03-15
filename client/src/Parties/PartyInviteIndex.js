@@ -22,16 +22,16 @@ class PartyInviteIndex extends React.Component {
     render(){
         return(
             <div>
-                 <div class="container">
-                        <div class="row">
+                 <div className="container">
+                        <div className="row">
                         {this.state.parties.map((p)=> {
                             return(
-                                <div class="col-sm-3">
-                                <div class="card" key={p._id}>
-                                <img class="card-img-top" src="https://images.unsplash.com/photo-1481016570479-9eab6349fde7?ixlib=rb-0.3.5&s=3cc0a309c344e5a34b359e5a663a16cc&auto=format&fit=crop&w=800&q=60"/>
+                                <div className="col-sm-3">
+                                <div className="card" key={p._id}>
+                                <img className="card-img-top" src="https://images.unsplash.com/photo-1481016570479-9eab6349fde7?ixlib=rb-0.3.5&s=3cc0a309c344e5a34b359e5a663a16cc&auto=format&fit=crop&w=800&q=60"/>
                                 <div class="card-body">
-                                    <h5 class="card-title">{p.title}</h5>
-                                    <a href={`/parties/${p._id}`} class="btn">Party</a>
+                                    <h5 className="card-title">{p.title}</h5>
+                                    <a href={`/parties/${p._id}`} className="btn">Party</a>
                                 </div>
                         </div>
                     </div>
