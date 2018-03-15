@@ -1,6 +1,5 @@
 import React from 'react'
 import axios from 'axios'
-import { Link } from 'react-router-dom'
 
 import clientAuth from '../clientAuth.js'
 import Chat from '../Chat/Chat.js'
@@ -147,47 +146,7 @@ class PartyShow extends React.Component {
                    <h1>oops! No Party here anymore</h1>
                 }
                 </div>
-                <Chat />
-                <div>
-                    <h2>People going to the party</h2>
-                    {this.state.invitees
-                    ?
-                    // <ul>
-                    //     {this.state.invitees.map((i)=>{
-                    //         return <li key={i._id + i.name}>
-                    //                     {i.name}
-                    //                     <button onClick={this.deleteOne.bind(this, i)}>Delete invite</button>
-                    //              </li>
-                    //     })}
-                    // </ul>
 
-
-                        <div className="container">
-                        <div className="row">
-                        {this.state.invitees.map((i)=> {
-                            return(
-                                <div className="col-sm-3">
-                                <div className="card" key={i._id+this.state.party._id}>
-                                <img className="card-img-top" src="https://images.unsplash.com/photo-1496707783091-854ecd84ae5e?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=83ad261f046b896efc451f7e8ae165af&auto=format&fit=crop&w=800&q=60"/>
-                                <div className="card-body">
-                                    <h5 className="card-title">{i.name}</h5>
-                                    <button onClick={this.deleteOne.bind(this, i)} className="btn btn-primary">Delete invite</button>
-
-                                </div>
-                        </div>
-                        </div>
-                            
-                            )
-                            
-                        })}
-                        </div> 
-                        </div>
-                    :
-                    null
-                    }
-                </div>    
-
-               
                 {this.props.currentUser._id === party._by
                 ?
                 <div id="signed-in content">
@@ -207,28 +166,49 @@ class PartyShow extends React.Component {
                                 :null
                                 }
                         </div>
+                <Chat />
+                <div>
+                    <h2>People going to the party</h2>
+                    {this.state.invitees
+                    ?
+                        <div className="container">
+                        <div className="row">
+                        {this.state.invitees.map((i)=> {
+                            return(
+                                <div className="col-sm-3">
+                                <div className="card" key={i._id + this.state.party._id}>
+                                {/* <img className="card-img-top" alt="pineapple with sunglasses"src="https://images.unsplash.com/photo-1496707783091-854ecd84ae5e?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=83ad261f046b896efc451f7e8ae165af&auto=format&fit=crop&w=800&q=60"/> */}
+                                <div className="card-body">
+                                    <h5 className="card-title">{i.name}</h5>
+                                    <button onClick={this.deleteOne.bind(this, i)} className="btn btn-primary">Delete invite</button>
+
+                                </div>
+                        </div>
+                        </div>
+                            
+                            )
+                            
+                        })}
+                        </div> 
+                        </div>
+                    :
+                    null
+                    }
+                </div>    
+
+               
                         
-                        {/*Add button to toggle away invites*/}
-                        <div id="UsersList">
-                            {/* <h1>Invite More People to Your Party</h1>
-                            <ul>
-                                {this.state.users.map((u)=>{
-                                    return <li key={u._id + "invite"}>
-                    
-                                
-                                                <button onClick={this.inviteOne.bind(this, u)}>Invite</button>
-                                                <Link to={`/users/${u._id}`}>{u.name}
-                                                </Link>
-                                        </li>
-                                })} 
-                            </ul> */}
-                            <div className="container">
+                       <div>
+                        <h1>Invite More People to Your Party</h1>
+                        </div>
+                            
+                        <div className="container">
                         <div className="row">
                         {this.state.users.map((u)=> {
                             return(
                                 <div className="col-sm-3">
                                 <div className="card" key={u._id}>
-                                <img className="card-img-top" src="https://images.unsplash.com/photo-1469598614039-ccfeb0a21111?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=cbb9f4a2a8e81e5f7946577e6b8a55f1&auto=format&fit=crop&w=700&q=60"/>
+                                {/* <img className="card-img-top" src="https://images.unsplash.com/photo-1469598614039-ccfeb0a21111?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=cbb9f4a2a8e81e5f7946577e6b8a55f1&auto=format&fit=crop&w=700&q=60"/> */}
                                 <div className="card-body">
                                     <h5 className="card-title">{u.name}</h5>
                                     <button onClick={this.inviteOne.bind(this, u)}className="btn btn-primary">Invite</button>
@@ -245,7 +225,7 @@ class PartyShow extends React.Component {
                         </div>
                         </div>
                     </div>
-                </div>
+               
                 :
                 null}
                 

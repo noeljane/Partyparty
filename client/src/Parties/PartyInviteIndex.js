@@ -27,7 +27,7 @@ class PartyInviteIndex extends React.Component {
                             return(
                                 <div class="col-sm-3">
                                 <div class="card" key={p._id}>
-                                <img class="card-img-top" src="https://images.unsplash.com/photo-1496707783091-854ecd84ae5e?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=83ad261f046b896efc451f7e8ae165af&auto=format&fit=crop&w=800&q=60"/>
+                                <img class="card-img-top" src="https://images.unsplash.com/photo-1481016570479-9eab6349fde7?ixlib=rb-0.3.5&s=3cc0a309c344e5a34b359e5a663a16cc&auto=format&fit=crop&w=800&q=60"/>
                                 <div class="card-body">
                                     <h5 class="card-title">{p.title}</h5>
                                     <a href={`/parties/${p._id}`} class="btn btn-primary">Party</a>
