@@ -72,9 +72,13 @@ class PartyShow extends React.Component {
     }
 
     inviteOne (user) {
+        //
         function checkAvailability(arr, val) {
-            return arr.some(arrVal => val === arrVal)
+            return arr.some(arrVal => val._id === arrVal._id)
+            
         }
+
+        
 
         if (checkAvailability(this.state.invitees, user)) {
             alert("You already invited this person, silly!")
@@ -158,16 +162,16 @@ class PartyShow extends React.Component {
                     // </ul>
 
 
-                        <div class="container">
-                        <div class="row">
+                        <div className="container">
+                        <div className="row">
                         {this.state.invitees.map((i)=> {
                             return(
-                                <div class="col-sm-3">
-                                <div class="card" key={i._id+this.state.party._id}>
-                                <img class="card-img-top" src="https://images.unsplash.com/photo-1496707783091-854ecd84ae5e?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=83ad261f046b896efc451f7e8ae165af&auto=format&fit=crop&w=800&q=60"/>
-                                <div class="card-body">
-                                    <h5 class="card-title">{i.name}</h5>
-                                    <button onClick={this.deleteOne.bind(this, i)} class="btn btn-primary">Delete invite</button>
+                                <div className="col-sm-3">
+                                <div className="card" key={i._id+this.state.party._id}>
+                                <img className="card-img-top" src="https://images.unsplash.com/photo-1496707783091-854ecd84ae5e?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=83ad261f046b896efc451f7e8ae165af&auto=format&fit=crop&w=800&q=60"/>
+                                <div className="card-body">
+                                    <h5 className="card-title">{i.name}</h5>
+                                    <button onClick={this.deleteOne.bind(this, i)} className="btn btn-primary">Delete invite</button>
 
                                 </div>
                         </div>
@@ -218,16 +222,16 @@ class PartyShow extends React.Component {
                                         </li>
                                 })} 
                             </ul> */}
-                            <div class="container">
-                        <div class="row">
+                            <div className="container">
+                        <div className="row">
                         {this.state.users.map((u)=> {
                             return(
-                                <div class="col-sm-3">
-                                <div class="card" key={u._id}>
-                                <img class="card-img-top" src="https://images.unsplash.com/photo-1469598614039-ccfeb0a21111?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=cbb9f4a2a8e81e5f7946577e6b8a55f1&auto=format&fit=crop&w=700&q=60"/>
-                                <div class="card-body">
-                                    <h5 class="card-title">{u.name}</h5>
-                                    <button onClick={this.inviteOne.bind(this, u)}class="btn btn-primary">Invite</button>
+                                <div className="col-sm-3">
+                                <div className="card" key={u._id}>
+                                <img className="card-img-top" src="https://images.unsplash.com/photo-1469598614039-ccfeb0a21111?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=cbb9f4a2a8e81e5f7946577e6b8a55f1&auto=format&fit=crop&w=700&q=60"/>
+                                <div className="card-body">
+                                    <h5 className="card-title">{u.name}</h5>
+                                    <button onClick={this.inviteOne.bind(this, u)}className="btn btn-primary">Invite</button>
                                     
 
                                 </div>
