@@ -168,7 +168,7 @@ class PartyShow extends React.Component {
                         </div>
                 <Chat />
                 <div>
-                    <h2>People going to the party</h2>
+                    <h1>People going to the party</h1>
                     {this.state.invitees
                     ?
                         <div className="container">

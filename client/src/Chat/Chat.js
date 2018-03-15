@@ -1,4 +1,5 @@
 import React from 'react'
+import './Chat.css'
 
 
 import socketIOClient from 'socket.io-client'
@@ -47,7 +48,7 @@ class Chat extends React.Component {
            <h2>Chat!</h2>
             <ul>
             {this.state.notes.map((n)=>{
-                return <li key={n.person}>{n.note}-{n.person}</li>
+                return <li className="text-message"key={n.person}>{n.note}-{n.person}</li>
             })}
             </ul>
             </div>
