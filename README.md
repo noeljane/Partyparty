@@ -59,7 +59,7 @@ If you'd like to run the repo locally, follow these instructions:
 
 --
 
-###User Stories
+### User Stories
 
 As a user:
  
