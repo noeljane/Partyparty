@@ -1,7 +1,7 @@
 # Partyparty
 
 --
-###Description
+### Description
 
 ![](./screenshots/chatshot.png )
 
@@ -10,7 +10,7 @@ This app is designed to help you make parties and invite your friends. It includ
 Check out the app [here:](https://tranquil-reaches-93920.herokuapp.com/users/5a97215e5340540014dd200c
 ) 
 
-###Technologies Used: 
+### Technologies Used: 
 
 Front-end:
 
@@ -30,7 +30,7 @@ Back-end:
 
 --
 
-###General Approach
+### General Approach
 
 1. Ideation
 2. Planning
@@ -39,10 +39,9 @@ Back-end:
 5. Build front-end with React. 
 
 
-**Here's the trello board: **
+**Here's the trello board:**
 https://trello.com/b/PladwX3R/party-party-project-4
 
--write more here about this experience
 
 --
 
@@ -61,22 +60,16 @@ If you'd like to run the repo locally, follow these instructions:
 --
 
 ###User Stories
-Who are users? What do they want and why? 
 
 As a user:
-I want to be able to create party. 
-I want to be able to invite my friends to the party
-I want to be able to chat with my friends about the party
+ 
+* I want to be able to create party. 
+* I want to be able to invite my friends to the party
+* I want to be able to chat with my friends about the party
 
 
 
---
 
-###WireFrames
-
---
-
-###Unsolved Problems/Major Hurdles: 
 
 
 
